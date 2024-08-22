@@ -30,7 +30,7 @@ const Navbar = () => {
           <IoBusOutline className="text-2xl" />
           Bus
         </li>
-        <li className="hover:text-indigo-500 cursor-pointer duration-200">
+        <li className="hover:text-orange-500 cursor-pointer duration-200">
           Manage Booking
         </li>
         <button className="font-semibold hover:text-orange-500 duration-200">
