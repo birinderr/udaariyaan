@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <div className="flex border-b-2 p-4 justify-between bg-gray-200 ">
-      <h1 className="text-xl font-semibold">Udaariyaan</h1>
-      <ul className="flex w-1/3 justify-evenly">
+    <div className="flex border-b-2 p-4 justify-between bg-gray-300 ">
+      <h1 className="text-xl font-bold">Udaariyaan</h1>
+      <ul className="flex w-1/3 justify-evenly font-semibold">
         <li>
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-blue-500" : "hover:text-blue-500"
+              isActive ? "text-blue-600" : "hover:text-blue-700"
             }
           >
             Home
@@ -20,7 +20,7 @@ const Header = () => {
           <NavLink
             to="/about"
             className={({ isActive }) =>
-              isActive ? "text-blue-500" : "hover:text-blue-500"
+              isActive ? "text-blue-600" : "hover:text-blue-700"
             }
           >
             About
@@ -30,7 +30,7 @@ const Header = () => {
           <NavLink
             to="/contact"
             className={({ isActive }) =>
-              isActive ? "text-blue-500" : "hover:text-blue-500"
+              isActive ? "text-blue-600" : "hover:text-blue-700"
             }
           >
             Contact
@@ -40,7 +40,7 @@ const Header = () => {
           <NavLink
             to="/login"
             className={({ isActive }) =>
-              isActive ? "text-blue-500" : "hover:text-blue-500"
+              isActive ? "text-blue-600" : "hover:text-blue-700"
             }
           >
             Login

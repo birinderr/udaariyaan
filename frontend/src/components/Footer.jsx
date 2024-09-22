@@ -9,7 +9,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="flex p-4 py-6 justify-between bg-gray-200 border-t-2 ">
+    <div className="flex p-4 py-6 justify-between bg-gray-300 border-t-2 px-11">
       <div className="flex flex-col gap-5">
         {/* more about company */}
         <h1 className="text-lg font-semibold">More About Company</h1>
@@ -50,8 +50,8 @@ const Footer = () => {
         <div className="flex flex-col gap-3">
           <div className="flex gap-2 items-center">
             {" "}
-            <FaHouse className="text-xl" /> Lorem ipsum dolor. GlassGlow Dr 40Fe
-            72.
+            <FaHouse className="text-xl" />
+            GlassGlow Dr 40Fe 72.
           </div>
           <div className="flex gap-2 items-center">
             <FaMobile className="text-xl" /> 1234567890
