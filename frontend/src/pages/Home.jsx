@@ -1,10 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SlSocialFacebook } from "react-icons/sl";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
 
+
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleHotelClick = () => {
+    navigate('/Hotel');  
+  };
   return (
     <div>
       <section
@@ -64,7 +70,7 @@ const Home = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               nulla!
             </p>
-            <button className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700">
+            <button onClick={handleHotelClick} className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700">
               Book now
             </button>
           </div>
