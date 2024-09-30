@@ -10,7 +10,7 @@ import { FaLinkedin } from "react-icons/fa";
 const Footer = () => {
   return (
     <div className="flex p-4 py-6 justify-between bg-gray-300 border-t-2 px-11">
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 items-start">
         {/* more about company */}
         <h1 className="text-xl font-bold">More About Company</h1>
         <div className="leading-8">
@@ -20,10 +20,10 @@ const Footer = () => {
           <p className="text-right">- Patrick Victoria CEO</p>
         </div>
       </div>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 items-start">
         {/* keep connected */}
         <h1 className="text-xl font-bold">Keep Connected</h1>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 items-start">
           <div className="flex gap-2 items-center hover:underline">
             {" "}
             <FaFacebook className="text-blue-500 text-xl" /> Like us on Facebook
@@ -47,7 +47,7 @@ const Footer = () => {
       <div className="flex flex-col gap-5">
         {/* contact information */}
         <h1 className="text-xl font-bold">Contact Information</h1>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 items-start">
           <div className="flex gap-2 items-center">
             {" "}
             <FaHouse className="text-xl" />

@@ -4,17 +4,16 @@ import { SlSocialFacebook } from "react-icons/sl";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
 
-
 const Home = () => {
   const navigate = useNavigate();
 
   const handleHotelClick = () => {
-    navigate('/Hotel');  
+    navigate("/Hotel");
   };
   return (
     <div>
       <section
-        className="bg-cover bg-center h-96"
+        className="h-96 bg-cover "
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHJhdmVsfGVufDB8MHwwfHx8MA%3D%3D')`,
         }}
@@ -70,7 +69,10 @@ const Home = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               nulla!
             </p>
-            <button onClick={handleHotelClick} className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700">
+            <button
+              onClick={handleHotelClick}
+              className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700"
+            >
               Book now
             </button>
           </div>
@@ -165,7 +167,7 @@ const Home = () => {
               for my trip, and the site was incredibly user-friendly. Highly
               recommend!”
             </p>
-            <div className="bg-cyan-400 h-full flex flex-col items-center justify-center gap-3">
+            <div className="bg-cyan-400 h-full w-full flex flex-col items-center justify-center gap-3">
               <h1 className="text-lg font-bold">Negan Smith</h1>
               <div className="flex gap-2 justify-center">
                 <SlSocialFacebook className="text-xl" />
@@ -180,7 +182,7 @@ const Home = () => {
               and the flight offers were unbeatable. Will definitely use this
               site again!”
             </p>
-            <div className="bg-violet-400 h-full flex flex-col items-center justify-center gap-3">
+            <div className="bg-violet-400 h-full w-full flex flex-col items-center justify-center gap-3">
               <h1 className="text-lg font-bold">Daryl Dixon</h1>
               <div className="flex gap-2 justify-center">
                 <SlSocialFacebook className="text-xl" />
@@ -194,7 +196,7 @@ const Home = () => {
               “Super convenient and easy to navigate. The exclusive offers
               helped me save a lot on my vacation. A must-use for all travelers!
             </p>
-            <div className="bg-rose-400 h-full flex flex-col items-center justify-center gap-3">
+            <div className="bg-rose-400 h-full w-full flex flex-col items-center justify-center gap-3">
               <h1 className="text-lg font-bold">Rick Grimes</h1>
               <div className="flex gap-2 justify-center">
                 <SlSocialFacebook className="text-xl" />
