@@ -12,7 +12,7 @@ const Footer = () => {
     <div className="flex p-4 py-6 justify-between bg-gray-300 border-t-2 px-11">
       <div className="flex flex-col gap-5">
         {/* more about company */}
-        <h1 className="text-lg font-semibold">More About Company</h1>
+        <h1 className="text-xl font-bold">More About Company</h1>
         <div className="leading-8">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
           Aliquam voluptas obcaecati, nam voluptate eligendi <br /> consectetur
@@ -22,7 +22,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col gap-5">
         {/* keep connected */}
-        <h1 className="text-lg font-semibold">Keep Connected</h1>
+        <h1 className="text-xl font-bold">Keep Connected</h1>
         <div className="flex flex-col gap-3">
           <div className="flex gap-2 items-center hover:underline">
             {" "}
@@ -46,7 +46,7 @@ const Footer = () => {
       </div>
       <div className="flex flex-col gap-5">
         {/* contact information */}
-        <h1 className="text-lg font-semibold">Contact Information</h1>
+        <h1 className="text-xl font-bold">Contact Information</h1>
         <div className="flex flex-col gap-3">
           <div className="flex gap-2 items-center">
             {" "}
