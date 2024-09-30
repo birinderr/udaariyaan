@@ -56,7 +56,10 @@ const Home = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               nulla!
             </p>
-            <button onClick ={handlebookClick}className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700">
+            <button
+              onClick={handlebookClick}
+              className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700"
+            >
               Book now
             </button>
           </div>
@@ -74,7 +77,7 @@ const Home = () => {
             </p>
             <button
               onClick={handleHotelClick}
-              className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700"
+              className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700"
             >
               Book now
             </button>
@@ -91,7 +94,7 @@ const Home = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               nulla!
             </p>
-            <button className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700">
+            <button className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700">
               Book now
             </button>
           </div>
@@ -116,7 +119,7 @@ const Home = () => {
               Book a stay at a 5-star hotel and enjoy a 30% discount on your
               booking.
             </p>
-            <button className="text-left  text-blue-600 hover:underline">
+            <button className="text-left w-full  text-blue-600 hover:underline">
               Book Now
             </button>
           </div>
@@ -133,7 +136,7 @@ const Home = () => {
             <p>
               Grab limited-time deals on international flights and save big!
             </p>
-            <button className="text-left text-blue-600 hover:underline">
+            <button className="text-left w-full text-blue-600 hover:underline">
               Grab Offer
             </button>
           </div>
@@ -151,7 +154,7 @@ const Home = () => {
               Use your XYZ Bank debit card and get 10% cashback on all your
               bookings.
             </p>
-            <button className=" text-left text-blue-600 hover:underline">
+            <button className=" text-left w-full text-blue-600 hover:underline">
               Claim Offer
             </button>
           </div>
