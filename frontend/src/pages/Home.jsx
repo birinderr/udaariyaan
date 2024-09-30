@@ -10,6 +10,9 @@ const Home = () => {
   const handleHotelClick = () => {
     navigate("/Hotel");
   };
+  const handlebookClick = () => {
+    navigate("/booking");
+  };
   return (
     <div>
       <section
@@ -53,7 +56,7 @@ const Home = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               nulla!
             </p>
-            <button className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700">
+            <button onClick ={handlebookClick}className="bg-blue-600 py-2 px-3 rounded-full text-white hover:bg-blue-700">
               Book now
             </button>
           </div>

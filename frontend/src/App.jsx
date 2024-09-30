@@ -7,7 +7,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Hotel from "./pages/Hotel";
 import Login from "./components/Login";
-
+import Boooking from "./components/Boooking";
+import Table from "./components/table";
+import PopularDestinations from "./components/PopularDestinations";
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,9 +20,12 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/hotel" element={<Hotel />} />
         <Route path="/login" element={<Login />} />
-
+        <Route path="/booking" element={<Boooking/>}/>
       </Routes>
+     
+      
       <Footer />
+      
     </BrowserRouter>
   );
 };
