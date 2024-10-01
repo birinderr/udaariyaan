@@ -36,23 +36,27 @@ const PopularDestinations = () => {
 
   return (
     <section className="py-20">
-      <h1 className="mb-12 text-center text-5xl font-bold text-gray-900">Popular Destinations</h1>
-      <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
-        {destinations.map((destination, index) => (
-          <article key={index} className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl">
-            <a href="#">
-              <div className="relative flex items-end overflow-hidden rounded-xl">
-                <img src={destination.image} alt={`${destination.name} Photo`} className="w-full h-48 object-cover" />
-              </div>
-              <div className="mt-2 p-2">
-                <h2 className="text-slate-700 text-xl font-semibold">{destination.name}</h2>
-                <p className="text-slate-400 mt-1 text-sm">{destination.description}</p>
-              </div>
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
+  <h1 className="mb-12 text-center text-5xl font-bold text-gray-900">Popular Destinations</h1>
+  <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
+    {destinations.map((destination, index) => (
+      <article key={index} className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <a href="#">
+          <div className="relative flex items-end overflow-hidden rounded-xl">
+            <img 
+              src={destination.image} 
+              alt={`${destination.name} Photo`} 
+              className="w-full h-48 object-cover transform transition-transform duration-300 ease-in-out hover:scale-110 hover:translate-y-2" 
+            />
+          </div>
+          <div className="mt-2 p-2">
+            <h2 className="text-slate-700 text-xl font-semibold">{destination.name}</h2>
+            <p className="text-slate-400 mt-1 text-sm">{destination.description}</p>
+          </div>
+        </a>
+      </article>
+    ))}
+  </div>
+</section>
   );
 };
 
