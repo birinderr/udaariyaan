@@ -47,11 +47,6 @@ function Login() {
   const sliderRef = useRef(null);
   const formSectionRef = useRef(null);
 // login signup error!
-  // const [loginEmail, setLoginEmail] = useState('');
-  // const [loginPassword, setLoginPassword] = useState('');
-  // const [signUpEmail, setSignUpEmail] = useState('');
-  // const [signUpPassword, setSignUpPassword] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
   const [loginEmailError, setLoginEmailError] = useState('');
   const [loginPasswordError, setLoginPasswordError] = useState('');
   const [signUpEmailError, setSignUpEmailError] = useState('');
@@ -186,7 +181,7 @@ function Login() {
 </div>
 <div className="right">         
   <div className="slider">
-      <div className="btn">
+      <div className="btno">
             <button className="log" onClick={handleLoginClick}>Login</button>     
             <button className="sig" onClick={handleSignupClick}>Sign-Up</button>  
       </div>
@@ -220,7 +215,7 @@ function Login() {
                     </div>
                     <pre>         or continue with</pre>
                     <div className="hrr">
-                         ___________
+                           ___________
                     </div>
                   </form>
                 </div>
