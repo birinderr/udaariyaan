@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import Boooking from "./components/Boooking";
 import Table from "./components/table";
 import PopularDestinations from "./components/PopularDestinations";
+import Error from "./pages/Error";
 const App = () => {
   return (
     <BrowserRouter>
@@ -20,12 +21,11 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/hotel" element={<Hotel />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/booking" element={<Boooking/>}/>
+        <Route path="/booking" element={<Boooking />} />
+        <Route path="*" element={<Error />} />
       </Routes>
-     
-      
+
       <Footer />
-      
     </BrowserRouter>
   );
 };
