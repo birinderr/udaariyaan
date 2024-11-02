@@ -14,9 +14,9 @@ const Footer = () => {
         {/* more about company */}
         <h1 className="text-xl font-bold">More About Company</h1>
         <div className="leading-8">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. <br />{" "}
-          Aliquam voluptas obcaecati, nam voluptate eligendi <br /> consectetur
-          ipsum minima! Rem, sit unde.
+          a comprehensive <mark>travel ticket booking platform</mark> designed{" "}
+          <br /> to make travel planning easy, convenient, and accessible <br />{" "}
+          for everyone. Built with a user-friendly interface.
           <p className="text-right">- Patrick Victoria CEO</p>
         </div>
       </div>

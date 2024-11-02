@@ -12,6 +12,7 @@ import Table from "./components/table";
 import PopularDestinations from "./components/PopularDestinations";
 import Error from "./pages/Error";
 import Profile from "./pages/Profile";
+import FeedbackForm from "./pages/FeedbackForm";
 const App = () => {
   return (
     <BrowserRouter>
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/booking" element={<Boooking />} />
         <Route path="*" element={<Error />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/feedback" element={<FeedbackForm />} />
       </Routes>
 
       <Footer />
