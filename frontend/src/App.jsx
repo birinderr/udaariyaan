@@ -11,6 +11,7 @@ import Boooking from "./components/Boooking";
 import Table from "./components/table";
 import PopularDestinations from "./components/PopularDestinations";
 import Error from "./pages/Error";
+import Profile from "./pages/Profile";
 const App = () => {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/booking" element={<Boooking />} />
         <Route path="*" element={<Error />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
 
       <Footer />
