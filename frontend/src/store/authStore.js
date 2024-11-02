@@ -18,11 +18,11 @@ export const useAuthStore = create((set) => ({
 	signup: async (email, password, cpassword) => {
 		set({ isLoading: true, error: null });
 		try {
-			const response = await axios.post(`${API_URL}/signup`, { email, password, cpassword});
+			const response = await axios.post(`${API_URL}/signup`, { email, password, cpassword });
 
 			if (response.data.alert) {
-                alert(response.data.alert); 
-            }
+				alert(response.data.alert);
+			}
 
 			if (response && response.data && response.data.user) {
 				set({ user: response.data.user, isAuthenticated: true, isLoading: false });
@@ -30,19 +30,19 @@ export const useAuthStore = create((set) => ({
 				location.reload()
 			}
 			else {
-			    throw new Error("Unexpected response structure");
+				throw new Error("Unexpected response structure");
 			}
 		} catch (error) {
 			const errorMessage = error.response?.data?.message || "Error signing up";
-            set({ error: errorMessage, isLoading: false });
-			
+			set({ error: errorMessage, isLoading: false });
+
 			if (error.response?.data?.alert) {
-				alert(error.response.data.alert); 
+				alert(error.response.data.alert);
 			}
 			throw error;
 		}
 	},
-	
+
 	login: async (email, password) => {
 		set({ isLoading: true, error: null });
 		try {
@@ -54,13 +54,13 @@ export const useAuthStore = create((set) => ({
 				isLoading: false,
 			});
 			if (response.data.alert) {
-                alert(response.data.alert); 
-            }
+				alert(response.data.alert);
+			}
 			alert("You've Been Logged In")
 		} catch (error) {
 			set({ error: error.response?.data?.message || "Error logging in", isLoading: false });
 			if (error.response?.data?.alert) {
-				alert(error.response.data.alert); 
+				alert(error.response.data.alert);
 			}
 			throw error;
 		}
