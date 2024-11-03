@@ -44,12 +44,12 @@ const Header = () => {
         </li>
         <li>
           <NavLink
-            to="/contact"
+            to="/feedback"
             className={({ isActive }) =>
               isActive ? "text-blue-600" : "hover:text-blue-700"
             }
           >
-            Contact
+            Feedback
           </NavLink>
         </li>
         <li>
