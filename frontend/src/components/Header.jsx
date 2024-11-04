@@ -54,6 +54,16 @@ const Header = () => {
         </li>
         <li>
           <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "hover:text-blue-700"
+            }
+          >
+            Profile
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/login"
             className={({ isActive }) =>
               isActive ? "text-blue-600" : "hover:text-blue-700"
