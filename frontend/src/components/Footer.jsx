@@ -9,7 +9,7 @@ import { FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <div className="flex p-4 py-6 justify-between bg-gray-300 border-t-2 px-11">
+    <div className="flex p-4 py-6 justify-between bg-blue-300 border-t-2 px-11">
       <div className="flex flex-col gap-5 items-start">
         {/* more about company */}
         <h1 className="text-xl font-bold">More About Company</h1>

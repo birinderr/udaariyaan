@@ -7,7 +7,7 @@ import { HiStatusOnline } from "react-icons/hi";
 const Header = () => {
   const onlineStatus = UseOnlineStatus();
   return (
-    <div className="flex border-b-2 p-4 justify-between bg-gray-300 ">
+    <div className="flex border-b-2 p-4 justify-between bg-blue-300 ">
       <h1 className="text-2xl font-bold">Udaariyaan</h1>
       <ul className="flex w-1/3 justify-evenly text-lg font-semibold">
         <li className="flex gap-2 items-center">
