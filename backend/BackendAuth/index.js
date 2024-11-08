@@ -5,6 +5,7 @@ import cors from "cors"
 import { connectDB } from "./db/connectDB.js"
 
 import authRoutes from "./routes/auth.route.js";
+import FeedbackRoutes from './routes/Feedback.route.js';
 
 dotenv.config();
 
@@ -21,7 +22,7 @@ app.use(cors(corsOptions));
 app.use(express.json())
 
 app.use("/api/auth", authRoutes)
-
+app.use('/', FeedbackRoutes);
 
 
 app.listen(port, (err) => {
