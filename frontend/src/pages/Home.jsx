@@ -167,7 +167,7 @@ const Home = () => {
           What Our Clients Say
         </h2>
         <div className="flex justify-evenly">
-          <div className="w-[400px] h-[200px] flex flex-col gap-3 border bg-gray-50">
+          <div className="w-[400px] h-[200px] flex flex-col gap-3 border  bg-gray-100">
             <p className="p-4 text-center">
               “The booking process was seamless! I easily found the best deals
               for my trip, and the site was incredibly user-friendly. Highly
@@ -182,7 +182,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="w-[400px] h-[200px] flex flex-col gap-3 border bg-gray-50">
+          <div className="w-[400px] h-[200px] flex flex-col gap-3 border bg-gray-100">
             <p className="p-4 text-center">
               “Fantastic experience! I got a great discount on my hotel booking,
               and the flight offers were unbeatable. Will definitely use this
@@ -197,7 +197,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="w-[400px] h-[200px] flex flex-col gap-3 border bg-gray-50">
+          <div className="w-[400px] h-[200px] flex flex-col gap-3 border bg-gray-100">
             <p className="p-4 text-center">
               “Super convenient and easy to navigate. The exclusive offers
               helped me save a lot on my vacation. A must-use for all travelers!

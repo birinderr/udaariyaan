@@ -1,26 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Home from "./Home";
 import { TfiFaceSad } from "react-icons/tfi";
 
 const Error = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
-    <div>
-      <div className="flex justify-center mt-2">
-        <TfiFaceSad className="text-[260px] text-gray-500" />
-      </div>
+    <section className="bg-gray-300 h-screen py-6 flex">
+      <div className="flex flex-col my-6 gap-5">
+        <h1 className=" text-blue-500 text-5xl">Oops! Something Went Wrong.</h1>
+        <div className="flex flex-col gap-2">
+          <span className="text-lg">We looked everywhere for this page.</span>
+          <span className="text-lg">Are you sure the URL is correct?</span>
+          <span className="text-lg">Get in touch with the site owner</span>
+        </div>
 
-      <h1 className="text-center text-[50px] text-gray-500">404</h1>
-      <h2 className="text-center text-[30px] text-gray-500">Page not found</h2>
-      <p className="text-gray-400 text-center">
-        The page you are looking for doesn't exist or an other error occured.
-      </p>
-      <h1 className="text-center text-lg">
-        <Link to="/" className="text-blue-500">
-          Go back
-        </Link>
-      </h1>
-    </div>
+        <button
+          className="bg-white border-blue-400 border-2 rounded-md p-3 hover:bg-blue-400 duration-200 hover:text-white active:bg-blue-700"
+          onClick={handleClick}
+        >
+          Go Back Home
+        </button>
+      </div>
+    </section>
   );
 };
 

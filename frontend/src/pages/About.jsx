@@ -29,7 +29,7 @@ const About = () => {
           />
           <h1 className="font-bold">Bharat</h1>
           <p className="font-semibold">Full-Stack Developer</p>
-          <div className="bg-blue-300 h-[290px] w-[300px] flex justify-center items-center mt-9">
+          <div className="bg-purple-300 h-[290px] w-[300px] flex justify-center items-center mt-9">
             <p className="text-center mt-2">
               Bharat brings a balanced approach to both frontend and backend
               development. With experience in building both server-side logic
