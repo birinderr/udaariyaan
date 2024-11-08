@@ -14,7 +14,7 @@ const Footer = () => {
         {/* more about company */}
         <h1 className="text-xl font-bold">More About Company</h1>
         <div className="leading-8">
-          a comprehensive travel ticket booking platform designed <br /> to make
+          A comprehensive travel ticket booking platform designed <br /> to make
           travel planning easy, convenient, and accessible <br /> for everyone.
           Built with a user-friendly interface.
           <p className="text-right">- Patrick Victoria CEO</p>

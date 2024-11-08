@@ -1,94 +1,128 @@
 import React from "react";
-
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import FeedbackCard from "../components/FeedbackCard";
 
 const FeedbackForm = () => {
-  function handleClick() {
-    toast.success("Thanks for your feedback!");
-  }
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = {
+      name: e.target.name.value,
+      message: e.target.message.value,
+    };
+    try {
+      const res = await fetch("http://localhost:3000/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!res) {
+        console.log("Failed to send feedback");
+      } else {
+        console.log(formData);
+      }
+      setName("");
+      setMessage("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const [feedback, setFeedback] = useState([]);
+  const fetchFeedback = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/feedback", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setFeedback(data);
+        console.log(data);
+      } else {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      }
+    } catch (error) {
+      console.log("Error while fetching feedback: ", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchFeedback();
+  }, [handleSubmit]);
   return (
-    <section className="flex justify-center items-center h-full mt-5 mb-5">
-      <div className="w-[600px] h-[850px] bg-gray-50 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] p-4">
-        <div className="flex items-center">
-          <span className="text-3xl font-bold">👋 Help us improve</span>
+    <section>
+      <div className="flex">
+        <div className="w-[500px] mt-10 p-6 bg-gray-100  border shadow-[0_3px_10px_rgb(0,0,0,0.2)]s">
+          <h2 className="text-2xl font-bold mb-4 text-center">Feedback Form</h2>
+          <form className="space-y-4" onSubmit={handleSubmit}>
+            <div>
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
+                name="name"
+                className="w-full px-3 py-2 border border-gray-300  focus:outline-none focus:ring focus:border-blue-300"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="message"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                value={message}
+                onChange={(e) => {
+                  setMessage(e.target.value);
+                }}
+                className="w-full px-3 py-2 border border-gray-300  focus:outline-none focus:ring focus:border-blue-300"
+                placeholder="Enter your message (25-50 words)"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="w-full bg-blue-500 text-white py-2 px-4  hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-300"
+            >
+              Submit
+            </button>
+          </form>
         </div>
-        <div className="flex flex-col gap-8 items-start p-2 mt-6">
-          <div className="flex flex-col gap-2 items-start w-full">
-            <label htmlFor="" className="font-semibold">
-              How often do you use our Booking platform?
-            </label>
-            <input
-              type="text"
-              placeholder="Daily/Weekly/Monthly/Occasionally"
-              className=" border-2 border-gray-300 w-full py-1 px-2 "
+      </div>
+      <div className="border-t border-gray-300 gap-10 py-10 flex flex-wrap mt-10">
+        {feedback.map((feed) => {
+          return (
+            <FeedbackCard
+              name={feed.name}
+              message={feed.message}
+              key={feed._id}
             />
-          </div>
-          <div className="flex flex-col gap-2 items-start w-full">
-            <label htmlFor="" className="font-semibold">
-              What is the main reason you use our platform for?
-            </label>
-            <input
-              type="text"
-              placeholder="to book flights, train tickets, plan trips, find deals, etc."
-              className=" border-2 border-gray-300 w-full py-1 px-2"
-            />
-          </div>
-          <div className="flex flex-col gap-2 items-start w-full">
-            <label htmlFor="" className="font-semibold">
-              What challenges does our platform help you solve?
-            </label>
-            <input
-              type="text"
-              placeholder="finding affordable travel options, booking tickets easily"
-              className=" border-2 border-gray-300 w-full py-1 px-2"
-            />
-          </div>
-          <div className="flex flex-col gap-2 items-start w-full">
-            <label htmlFor="" className="font-semibold">
-              What is your favorite feature on our website?
-            </label>
-            <input
-              type="text"
-              placeholder="flight booking, trip planner, price comparison, customer support, etc."
-              className=" border-2 border-gray-300 w-full py-1 px-2"
-            />
-          </div>
-          <div className="flex flex-col gap-2 items-start w-full">
-            <label htmlFor="" className="font-semibold">
-              What improvements would you like to see on our platform?
-            </label>
-            <input
-              type="text"
-              className=" border-2 border-gray-300 w-full py-1 px-2"
-            />
-          </div>
-          <div className="flex flex-col gap-2 items-start w-full">
-            <label htmlFor="" className="font-semibold">
-              How would you rate your overall experience with our platform?
-            </label>
-            <input
-              type="text"
-              placeholder="Rating scale from 1 to 5"
-              className=" border-2 border-gray-300 w-full py-1 px-2"
-            />
-          </div>
-          <div className="flex flex-col gap-2 items-start w-full">
-            <label htmlFor="" className="font-semibold">
-              Any additional feedback or suggestions?
-            </label>
-            <input
-              type="text"
-              placeholder="Optional"
-              className=" border-2 border-gray-300 w-full py-1 px-2"
-            />
-          </div>
-          <button
-            onClick={handleClick}
-            className="bg-blue-600 text-white w-full p-2 hover:bg-blue-700"
-          >
-            Submit feedback
-          </button>
-        </div>
+          );
+        })}
       </div>
     </section>
   );
