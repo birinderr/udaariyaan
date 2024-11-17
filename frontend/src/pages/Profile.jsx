@@ -1,61 +1,59 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authStore";
 
 const Profile = () => {
-    const { user, isAuthenticated, error, isLoading, isCheckingAuth } = useAuthStore();
+  const { user, logout, isAuthenticated } = useAuthStore();
+  const navigate = useNavigate();
 
-    // Redirect to login page if not authenticated
-    useEffect(() => {
-        if (!isCheckingAuth && !isAuthenticated) {
-            alert("You must log in to access this page");
-            window.location.href = "/login";
-        }
-    }, [isAuthenticated, isCheckingAuth]);
+  // const handleLogout = async () => {
+  //   try {
+  //     await logout();
+  //     alert("You have been logged out.");
+  //     navigate("/login"); // Redirect to login page after logout
+  //   } catch (error) {
+  //     console.error("Logout failed", error);
+  //     alert("Failed to log out. Please try again.");
+  //   }
+  // };
 
-    if (isLoading || isCheckingAuth) {
-        return <div className="loading text-center py-10">Loading...</div>;
-    }
-
-    if (error) {
-        return <div className="error-message text-red-500 text-center py-5">{error}</div>;
-    }
-
+  if (!isAuthenticated) {
     return (
-        <div className="profile-page-container bg-gray-100 min-h-screen flex flex-col items-center">
-            <div className="profile-card bg-white shadow-lg rounded-lg p-6 mt-10 w-11/12 md:w-1/2">
-                <h1 className="text-3xl font-bold text-center mb-6">
-                    Welcome, {user?.name || "User"}!
-                </h1>
-                <div className="profile-details text-lg">
-                    <p className="mb-2">
-                        <strong>Email:</strong> {user?.email}
-                    </p>
-                    <p className="mb-2">
-                        <strong>Last Login:</strong>{" "}
-                        {new Date(user?.lastLogin).toLocaleString()}
-                    </p>
-                    <p className="mb-2">
-                        <strong>Account Verified:</strong>{" "}
-                        {user?.isVerified ? "Yes" : "No"}
-                    </p>
-                </div>
-                <div className="profile-actions flex justify-center mt-6 space-x-4">
-                    <button
-                        onClick={() => window.location.href = "/booking"}
-                        className="action-button bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                    >
-                        Book a Trip
-                    </button>
-                    <button
-                        onClick={() => window.location.href = "/feedback"}
-                        className="action-button bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                    >
-                        Leave Feedback
-                    </button>
-                </div>
-            </div>
-        </div>
+      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+        <h1 className="text-2xl font-bold mb-4">You are not logged in.</h1>
+        <button
+          onClick={() => navigate("/login")}
+          className="px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
+        >
+          Go to Login
+        </button>
+      </div>
     );
+  }
+
+  return (
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <h1 className="text-4xl font-bold mb-6">Welcome, {user?.email || "User"}!</h1>
+      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
+        <p className="text-lg font-semibold mb-2">Profile Information:</p>
+        <ul className="text-gray-700">
+          <li className="mb-2">
+            <strong>Email:</strong> {user?.email}
+          </li>
+          <li>
+            <strong>Last Login:</strong>{" "}
+            {user?.lastLogin ? new Date(user?.lastLogin).toLocaleString() : "N/A"}
+          </li>
+        </ul>
+      </div>
+      <button
+        onClick={logout}
+        className="mt-4 px-6 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
+      >
+        Logout
+      </button>
+    </div>
+  );
 };
 
 export default Profile;
