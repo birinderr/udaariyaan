@@ -6,16 +6,6 @@ const Profile = () => {
   const { user, logout, isAuthenticated } = useAuthStore();
   const navigate = useNavigate();
 
-  // const handleLogout = async () => {
-  //   try {
-  //     await logout();
-  //     alert("You have been logged out.");
-  //     navigate("/login"); // Redirect to login page after logout
-  //   } catch (error) {
-  //     console.error("Logout failed", error);
-  //     alert("Failed to log out. Please try again.");
-  //   }
-  // };
 
   if (!isAuthenticated) {
     return (
