@@ -44,7 +44,10 @@ const Home = () => {
       <section id="destinations" className="py-12 ">
         <h2 className="text-3xl font-bold text-center mb-8">Book tickets</h2>
         <div className="flex justify-evenly">
-          <div className="w-[400px] border  p-4 flex flex-col gap-3 shadow-lg hover:scale-105 duration-300">
+          <div
+            className="w-[400px] border  p-4 flex flex-col gap-3 shadow-lg hover:scale-105 duration-300 hover:cursor-pointer"
+            onClick={handlebookClick}
+          >
             {/* airplanes tickest */}
             <img
               className="w-[400px] h-[350px]"
@@ -56,14 +59,14 @@ const Home = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               nulla!
             </p>
-            <button
-              onClick={handlebookClick}
-              className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700"
-            >
+            <button className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700">
               Book now
             </button>
           </div>
-          <div className="w-[400px] border  p-4 flex flex-col gap-3 shadow-lg hover:scale-105 duration-300">
+          <div
+            className="w-[400px] border  p-4 flex flex-col gap-3 shadow-lg hover:scale-105 duration-300 hover:cursor-pointer"
+            onClick={handleHotelClick}
+          >
             {/* hotels booking */}
             <img
               className="w-[400px] h-[350px]"
@@ -75,14 +78,11 @@ const Home = () => {
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
               nulla!
             </p>
-            <button
-              onClick={handleHotelClick}
-              className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700"
-            >
+            <button className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700">
               Book now
             </button>
           </div>
-          <div className="w-[400px] border  p-4 flex flex-col gap-3 shadow-lg hover:scale-105 duration-300">
+          <div className="w-[400px] border  p-4 flex flex-col gap-3 shadow-lg hover:scale-105 duration-300 hover:cursor-pointer">
             {/* cabs bookings */}
             <img
               className="w-[400px] h-[350px] "
