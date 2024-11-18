@@ -31,7 +31,7 @@ const Profile = () => {
         <h1 className="text-2xl font-bold mb-4">You are not logged in.</h1>
         <button
           onClick={() => (window.location = "/login")}
-          className="px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
+          className="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
         >
           Go to Login
         </button>
@@ -77,7 +77,7 @@ const Profile = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600"
+            className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700"
           >
             Update
           </button>
@@ -86,7 +86,7 @@ const Profile = () => {
       </div>
       <button
         onClick={logout}
-        className="mt-4 px-6 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
+        className="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
       >
         Logout
       </button>
