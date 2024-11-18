@@ -2,6 +2,7 @@ import { generateKey } from 'crypto';
 import { User } from '../models/user.model.js';
 import bcryptjs from 'bcryptjs'
 import { generateTokenAndSetCookie } from '../utils/generateTokenAndSetCookie.js';
+import jwt from "jsonwebtoken";
 
 export const signup = async (req,res) => {
     const {email, password, cpassword} = req.body;
@@ -77,3 +78,62 @@ export const logout = async (req,res) => {
     res.clearCookie("token")
     res.status(200).json({ success: true, message: "Logged Out Successfully! "})
 }
+export const getUserProfile = async (req, res) => {
+    try {
+        const token = req.cookies.token;
+
+        if (!token) {
+            return res.status(401).json({ success: false, message: "Unauthorized" });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const user = await User.findById(decoded.userId).select("-password");
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        res.status(200).json({ 
+            success: true, 
+            user: {
+                email: user.email,
+                name: user.name || "",
+                phone: user.phone || "",
+                address: user.address || "",
+                lastLogin: user.lastLogin,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: "Error fetching user data" });
+    }
+};
+export const updateUserProfile = async (req, res) => {
+    try {
+        const token = req.cookies.token;
+
+        if (!token) {
+            return res.status(401).json({ success: false, message: "Unauthorized" });
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const { name, phone, address } = req.body;
+
+        const user = await User.findById(decoded.userId);
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found" });
+        }
+
+        // Update fields if provided
+        user.name = name || user.name;
+        user.phone = phone || user.phone;
+        user.address = address || user.address;
+
+        await user.save();
+
+        res.status(200).json({ success: true, message: "Profile updated successfully", user });
+    } catch (error) {
+        console.error("Error updating profile:", error);
+        res.status(500).json({ success: false, message: "Error updating profile" });
+    }
+};

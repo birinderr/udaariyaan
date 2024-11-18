@@ -6,6 +6,7 @@ import { connectDB } from "./db/connectDB.js"
 
 import authRoutes from "./routes/auth.route.js";
 import FeedbackRoutes from './routes/Feedback.route.js';
+import cookieParser from 'cookie-parser';
 
 dotenv.config();
 
@@ -18,6 +19,8 @@ const corsOptions = {
 };
 app.options('*', cors(corsOptions));
 app.use(cors(corsOptions));
+
+app.use(cookieParser())
 
 app.use(express.json())
 

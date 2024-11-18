@@ -24,6 +24,20 @@ export const useAuthStore = create((set) => ({
 			console.error("Error fetching user data", error);
 		}
 	},
+
+    updateUser: async (updatedData) => {
+        try {
+            const response = await axios.put(`${API_URL}/update-profile`, updatedData, {
+                withCredentials: true,
+            });
+            set({ user: { ...response.data.user }, message: response.data.message });
+            return response.data.message;
+        } catch (error) {
+            console.error("Error updating user data", error);
+            set({ error: error.response?.data?.message || "Error updating profile" });
+            throw error;
+        }
+    },
 	
 	signup: async (email, password, cpassword) => {
 		set({ isLoading: true, error: null });

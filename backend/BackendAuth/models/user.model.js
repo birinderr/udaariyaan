@@ -18,6 +18,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: false,
     },
+    phone: {
+        type: String, // New field for phone number
+        required: false,
+    },
+    address: {
+        type: String, // New field for address
+        required: false,
+    },
     lastLogin: {
         type: Date,
         default: Date.now
