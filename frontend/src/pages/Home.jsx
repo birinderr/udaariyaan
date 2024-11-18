@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SlSocialFacebook } from "react-icons/sl";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
+import { FaArrowUp } from "react-icons/fa";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,10 +16,21 @@ const Home = () => {
   };
   return (
     <div>
+      <div
+        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        <FaArrowUp />
+      </div>
       <section
-        className="h-96 bg-cover "
+        className="h-96 bg-cover"
+        // style={{
+        //   backgroundImage: `url('https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHJhdmVsfGVufDB8MHwwfHx8MA%3D%3D')`,
+        // }}
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1530789253388-582c481c54b0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dHJhdmVsfGVufDB8MHwwfHx8MA%3D%3D')`,
+          backgroundImage: `url('https://media.istockphoto.com/id/641294046/photo/aerial-view-on-red-car-on-the-road-near-tea-plantation.jpg?s=2048x2048&w=is&k=20&c=PoTEkilwEZS4nOnn7olNWmPdhLtX92gZ5reoQa0iSZY=')`,
         }}
       >
         <div className="flex justify-center items-center h-full bg-black bg-opacity-30 ">

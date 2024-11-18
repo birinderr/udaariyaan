@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className="flex border-b-2 p-4 justify-between bg-blue-300">
       <h1 className="text-2xl font-bold">Udaariyaan</h1>
-      <ul className="flex w-1/3 justify-evenly text-lg font-semibold">
+      <ul className="flex w-1/2 justify-evenly text-lg font-semibold">
         <li className="flex gap-2 items-center">
           Status:{" "}
           {onlineStatus ? (
@@ -33,6 +33,36 @@ const Header = () => {
             }
           >
             Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/booking"
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "hover:text-blue-700"
+            }
+          >
+            Flights
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/Hotel"
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "hover:text-blue-700"
+            }
+          >
+            Hotels
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/cabs"
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "hover:text-blue-700"
+            }
+          >
+            Cabs
           </NavLink>
         </li>
         <li>

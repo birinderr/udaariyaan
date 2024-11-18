@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../store/authStore";
+import { FaArrowUp } from "react-icons/fa";
 
 const Profile = () => {
   const { user, logout, isAuthenticated, updateUser } = useAuthStore();
@@ -41,9 +42,21 @@ const Profile = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-6">Welcome, {user?.email || "User"}!</h1>
+      <div
+        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        <FaArrowUp />
+      </div>
+      <h1 className="text-4xl font-bold mb-6">
+        Welcome, {user?.email || "User"}!
+      </h1>
       <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
-        <p className="text-lg font-semibold mb-2">Update Profile Information:</p>
+        <p className="text-lg font-semibold mb-2">
+          Update Profile Information:
+        </p>
         <form onSubmit={handleUpdate} className="space-y-4">
           <div>
             <label className="block text-gray-700">Name:</label>
@@ -82,7 +95,9 @@ const Profile = () => {
             Update
           </button>
         </form>
-        {message && <p className="mt-4 text-center text-green-600">{message}</p>}
+        {message && (
+          <p className="mt-4 text-center text-green-600">{message}</p>
+        )}
       </div>
       <button
         onClick={logout}

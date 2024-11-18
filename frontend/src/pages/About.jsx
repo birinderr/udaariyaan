@@ -1,8 +1,17 @@
 import React from "react";
+import { FaArrowUp } from "react-icons/fa";
 
 const About = () => {
   return (
     <div className="flex flex-col p-3 gap-9">
+      <div
+        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        <FaArrowUp />
+      </div>
       <div className=" ">
         <h1 className="font-bold text-5xl mb-5 text-center">Our team</h1>
         <p className="text-xl text-center">

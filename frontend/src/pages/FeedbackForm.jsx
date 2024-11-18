@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import FeedbackCard from "../components/FeedbackCard";
+import { FaArrowUp } from "react-icons/fa";
 
 const FeedbackForm = () => {
   const [name, setName] = useState("");
@@ -58,6 +59,14 @@ const FeedbackForm = () => {
   }, [handleSubmit]);
   return (
     <section>
+      <div
+        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        <FaArrowUp />
+      </div>
       <div className="flex">
         <div className="w-[500px] mt-10 p-6 bg-gray-100  border shadow-[0_3px_10px_rgb(0,0,0,0.2)]s">
           <h2 className="text-2xl font-bold mb-4 text-center">Feedback Form</h2>
