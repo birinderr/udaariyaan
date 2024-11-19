@@ -4,19 +4,12 @@ import Faqs from "../components/Faqs";
 import FilterSidebar from "../components/FilterSidebar";
 import PopularHotels from "../components/PopularHotels";
 import PopularDestinations from "../components/PopularDestinations";
-import { FaArrowUp } from "react-icons/fa";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Hotel = () => {
   return (
     <div>
-       <div
-        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <FaArrowUp />
-      </div>
+       <ScrollToTop />
       <div className="relative text-center bg-blue-100 py-8 z-10">
         <h2 className="text-black-800 text-3xl font-extrabold md:text-5xl">
           Book Hotels and Homestays

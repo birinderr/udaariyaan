@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { MdDelete } from "react-icons/md";
 import { deletebooking } from "../redux/action";
-import { FaArrowUp } from "react-icons/fa";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Table = () => {
   const data = useSelector((state) => state.data);
@@ -15,14 +15,7 @@ const Table = () => {
 
   return (
     <>
-    <div
-        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <FaArrowUp />
-      </div>
+      <ScrollToTop />
       {data.length > 0 && (
         <div className="max-w-4xl mx-auto mt-5 bg-white shadow-lg rounded-lg p-4">
           <div className="overflow-x-auto">
@@ -68,4 +61,3 @@ const Table = () => {
 };
 
 export default Table;
-

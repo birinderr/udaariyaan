@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { SlSocialFacebook } from "react-icons/sl";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
-import { FaArrowUp } from "react-icons/fa";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,14 +16,7 @@ const Home = () => {
   };
   return (
     <div>
-      <div
-        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
-        }}
-      >
-        <FaArrowUp />
-      </div>
+        <ScrollToTop />
       <section
         className="h-96 bg-cover"
         // style={{

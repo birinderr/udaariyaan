@@ -172,7 +172,7 @@ function Login() {
   </div>
   <div className="text">
     <div className="text1">
-      <h2><q> Explore Endless Destinations With <span>U</span>daariyaan, Your Gateway To Unforgettable Travel Experience</q></h2>
+      <h2 className='font-bold'><q> Explore Endless Destinations With <span>U</span>daariyaan, Your Gateway To Unforgettable Travel Experience</q></h2>
     </div>
     <div className="text2">
       <h4>Adventure Awaits You</h4>
