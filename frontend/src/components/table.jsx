@@ -21,7 +21,7 @@ const Table = () => {
           <div className="overflow-x-auto">
             <table className="table-auto w-full">
               {/* Table Header */}
-              <thead className="bg-indigo-600 text-white">
+              <thead className="bg-blue-600 text-white">
                 <tr>
                   <th className="px-4 py-2 text-left">Destination From</th>
                   <th className="px-4 py-2 text-left">Destination To</th>

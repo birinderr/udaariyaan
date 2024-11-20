@@ -4,7 +4,7 @@ const SearchBar = ({ setFilters }) => {
 
   return (
     <div className="m-4 max-w-5xl">
-      <div className="rounded-3xl border-4 border-gray-200 bg-white p-6 shadow-xl text-center">
+      <div className="rounded-3xl border-4 border-gray-200 bg-white p-8 shadow-xl text-center">
         <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4">
           
           <div className="flex flex-col">
