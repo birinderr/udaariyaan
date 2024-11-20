@@ -28,7 +28,12 @@ const Profile = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <div
+        className="flex flex-col items-center justify-center h-screen"
+        style={{
+          background: "linear-gradient(to right, #f5f7fa, #c3cfe2)", // Gradient background
+        }}
+      >
         <h1 className="text-2xl font-bold mb-4">You are not logged in.</h1>
         <button
           onClick={() => (window.location = "/login")}
@@ -41,22 +46,29 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div
+      className="flex flex-col items-center justify-start min-h-screen"
+      style={{
+        background: "linear-gradient(to right, #f5f7fa, #c3cfe2)", // Page gradient background
+      }}
+    >
       <div
-        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
-        onClick={() => {
-          window.scrollTo({ top: 0, behavior: "smooth" });
+        className="w-full text-white text-center py-20"
+        style={{
+          backgroundColor: "#bfdbfe", // Blue background
+          clipPath: "polygon(0 0, 100% 0, 100% 70%, 0 100%)", // Wave design
         }}
       >
-        <FaArrowUp />
+        <h1 className="text-4xl font-bold text-black">Welcome, {user?.name || "User"}!</h1>
+        <p className="text-lg mt-2 text-black">Manage your profile settings below</p>
       </div>
-      <h1 className="text-4xl font-bold mb-6">
-        Welcome, {user?.email || "User"}!
-      </h1>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
-        <p className="text-lg font-semibold mb-2">
-          Update Profile Information:
-        </p>
+      <div
+        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md mt-[-50px]"
+        style={{
+          zIndex: 10, // Ensure the card stays above the blue background
+        }}
+      >
+        <p className="text-lg font-semibold mb-4">Update Profile Information:</p>
         <form onSubmit={handleUpdate} className="space-y-4">
           <div>
             <label className="block text-gray-700">Name:</label>
@@ -105,6 +117,14 @@ const Profile = () => {
       >
         Logout
       </button>
+      <div
+        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        <FaArrowUp />
+      </div>
     </div>
   );
 };
