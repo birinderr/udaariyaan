@@ -4,7 +4,7 @@ import { FaArrowUp } from "react-icons/fa";
 const ScrollToTop = () => {
   return (
     <div
-      className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3 animate-bounce"
+      className="fixed bg-blue-500 active:bg-blue-600 p-2 text-white cursor-pointer bottom-4 right-3 animate-bounce"
       onClick={() => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }}

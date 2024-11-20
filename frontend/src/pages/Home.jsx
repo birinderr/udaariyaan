@@ -4,6 +4,7 @@ import { SlSocialFacebook } from "react-icons/sl";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
 import ScrollToTop from "../components/ScrollToTop";
+import { Typewriter } from "react-simple-typewriter";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ const Home = () => {
   };
   return (
     <div>
-        <ScrollToTop />
+      <ScrollToTop />
       <section
         className="h-96 bg-cover"
         // style={{
@@ -29,18 +30,23 @@ const Home = () => {
         <div className="flex justify-center items-center h-full bg-black bg-opacity-30 ">
           <div className="text-center text-white">
             <h2 className="text-4xl font-bold mb-4">
-              Udaariyaan - Explore the World with Ease
+              Udaariyaan -
+              <Typewriter
+                words={[
+                  " Explore the World with Ease",
+                  " Your Next Journey Begins Here",
+                  " Travel Far, Travel Safe, Travel Smart",
+                ]}
+                loop={Infinity}
+                typeSpeed={70}
+                deleteSpeed={50}
+                delaySpeed={2000}
+              />
             </h2>
             <p className="mb-6">
               Revolutionizing Travel with Seamless, Secure and Personalized
               Booking Solutions
             </p>
-            <a
-              href="#destinations"
-              className="bg-blue-600 px-6 py-3 rounded-full text-white hover:bg-blue-700"
-            >
-              Get Started
-            </a>
           </div>
         </div>
       </section>
