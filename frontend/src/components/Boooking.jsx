@@ -28,8 +28,7 @@ const Boooking = () => {
   };
 
   useEffect(() => {
-    const fetchCountries = async () => {
-      try {
+    const fetchCountries = async () => {      try {
         const response = await fetch('https://restcountries.com/v3.1/all');
         const countryData = await response.json();
         setCountries(countryData);
