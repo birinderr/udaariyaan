@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { MdDelete } from "react-icons/md";
 import { deletebooking } from "../redux/action";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Table = () => {
   const data = useSelector((state) => state.data);
@@ -14,12 +15,13 @@ const Table = () => {
 
   return (
     <>
+      <ScrollToTop />
       {data.length > 0 && (
         <div className="max-w-4xl mx-auto mt-5 bg-white shadow-lg rounded-lg p-4">
           <div className="overflow-x-auto">
             <table className="table-auto w-full">
               {/* Table Header */}
-              <thead className="bg-indigo-600 text-white">
+              <thead className="bg-blue-600 text-white">
                 <tr>
                   <th className="px-4 py-2 text-left">Destination From</th>
                   <th className="px-4 py-2 text-left">Destination To</th>
@@ -59,4 +61,3 @@ const Table = () => {
 };
 
 export default Table;
-

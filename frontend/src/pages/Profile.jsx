@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../store/authStore";
+import { FaArrowUp } from "react-icons/fa";
 
 const Profile = () => {
   const { user, logout, isAuthenticated, updateUser } = useAuthStore();
@@ -27,11 +28,16 @@ const Profile = () => {
 
   if (!isAuthenticated) {
     return (
-      <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <div
+        className="flex flex-col items-center justify-center h-screen"
+        style={{
+          background: "linear-gradient(to right, #f5f7fa, #c3cfe2)", // Gradient background
+        }}
+      >
         <h1 className="text-2xl font-bold mb-4">You are not logged in.</h1>
         <button
           onClick={() => (window.location = "/login")}
-          className="px-4 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
+          className="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
         >
           Go to Login
         </button>
@@ -40,10 +46,29 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-6">Welcome, {user?.email || "User"}!</h1>
-      <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md">
-        <p className="text-lg font-semibold mb-2">Update Profile Information:</p>
+    <div
+      className="flex flex-col items-center justify-start min-h-screen"
+      style={{
+        background: "linear-gradient(to right, #f5f7fa, #c3cfe2)", // Page gradient background
+      }}
+    >
+      <div
+        className="w-full text-white text-center py-20"
+        style={{
+          backgroundColor: "#bfdbfe", // Blue background
+          clipPath: "polygon(0 0, 100% 0, 100% 70%, 0 100%)", // Wave design
+        }}
+      >
+        <h1 className="text-4xl font-bold text-black">Welcome, {user?.name || "User"}!</h1>
+        <p className="text-lg mt-2 text-black">Manage your profile settings below</p>
+      </div>
+      <div
+        className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md mt-[-50px]"
+        style={{
+          zIndex: 10, // Ensure the card stays above the blue background
+        }}
+      >
+        <p className="text-lg font-semibold mb-4">Update Profile Information:</p>
         <form onSubmit={handleUpdate} className="space-y-4">
           <div>
             <label className="block text-gray-700">Name:</label>
@@ -77,19 +102,29 @@ const Profile = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600"
+            className="w-full bg-blue-600 text-white font-bold py-2 px-4 rounded hover:bg-blue-700"
           >
             Update
           </button>
         </form>
-        {message && <p className="mt-4 text-center text-green-600">{message}</p>}
+        {message && (
+          <p className="mt-4 text-center text-green-600">{message}</p>
+        )}
       </div>
       <button
         onClick={logout}
-        className="mt-4 px-6 py-2 bg-orange-500 text-white font-semibold rounded hover:bg-orange-600"
+        className="mt-4 px-6 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
       >
         Logout
       </button>
+      <div
+        className="fixed bg-blue-400 active:bg-blue-500 p-2 text-white cursor-pointer bottom-4 right-3"
+        onClick={() => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }}
+      >
+        <FaArrowUp />
+      </div>
     </div>
   );
 };

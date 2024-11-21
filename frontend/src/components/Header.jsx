@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className="flex border-b-2 p-4 justify-between bg-blue-300">
       <h1 className="text-2xl font-bold">Udaariyaan</h1>
-      <ul className="flex w-1/3 justify-evenly text-lg font-semibold">
+      <ul className="flex w-1/2 justify-evenly text-lg font-semibold">
         <li className="flex gap-2 items-center">
           Status:{" "}
           {onlineStatus ? (
@@ -29,7 +29,7 @@ const Header = () => {
           <NavLink
             to="/"
             className={({ isActive }) =>
-              isActive ? "text-blue-600" : "hover:text-blue-700"
+              isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
             }
           >
             Home
@@ -37,9 +37,39 @@ const Header = () => {
         </li>
         <li>
           <NavLink
+            to="/booking"
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
+            }
+          >
+            Flights
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/Hotel"
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
+            }
+          >
+            Hotels
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/cabs"
+            className={({ isActive }) =>
+              isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
+            }
+          >
+            Cabs
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
             to="/about"
             className={({ isActive }) =>
-              isActive ? "text-blue-600" : "hover:text-blue-700"
+              isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
             }
           >
             About
@@ -49,7 +79,7 @@ const Header = () => {
           <NavLink
             to="/feedback"
             className={({ isActive }) =>
-              isActive ? "text-blue-600" : "hover:text-blue-700"
+              isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
             }
           >
             Feedback
@@ -59,7 +89,7 @@ const Header = () => {
           <NavLink
             to="/profile"
             className={({ isActive }) =>
-              isActive ? "text-blue-600" : "hover:text-blue-700"
+              isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
             }
           >
             Profile
@@ -70,7 +100,9 @@ const Header = () => {
             <NavLink
               to="/login"
               className={({ isActive }) =>
-                isActive ? "text-blue-600" : "hover:text-blue-700"
+                isActive
+                  ? "text-blue-600"
+                  : "hover:text-blue-700 hover:underline"
               }
             >
               Login

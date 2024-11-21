@@ -1,8 +1,10 @@
 import React from "react";
+import ScrollToTop from "../components/ScrollToTop.jsx";
 
 const About = () => {
   return (
     <div className="flex flex-col p-3 gap-9">
+      <ScrollToTop />
       <div className=" ">
         <h1 className="font-bold text-5xl mb-5 text-center">Our team</h1>
         <p className="text-xl text-center">

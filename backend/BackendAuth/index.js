@@ -6,6 +6,7 @@ import { connectDB } from "./db/connectDB.js"
 
 import authRoutes from "./routes/auth.route.js";
 import FeedbackRoutes from './routes/Feedback.route.js';
+import hotelRoutes from './routes/hotel.route.js';
 import cookieParser from 'cookie-parser';
 
 dotenv.config();
@@ -26,7 +27,7 @@ app.use(express.json())
 app.use("/flight",planerouter);
 app.use("/api/auth", authRoutes)
 app.use('/', FeedbackRoutes);
-
+app.use('/api',hotelRoutes);
 
 app.listen(port, (err) => {
     if (err) {
