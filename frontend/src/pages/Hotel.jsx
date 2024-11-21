@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
 import Faqs from "../components/Faqs";
 import FilterSidebar from "../components/FilterSidebar";
@@ -7,6 +7,17 @@ import PopularDestinations from "../components/PopularDestinations";
 import ScrollToTop from "../components/ScrollToTop";
 
 const Hotel = () => {
+  const [filters, setFilters] = useState({
+    location: '',
+    checkInDate: '',
+    checkOutDate: '',
+    priceRange: '',
+  });
+
+  const handleFilterChange = (updatedFilters) => {
+    setFilters(updatedFilters); // Update filters state when SearchBar changes
+  };
+
   return (
     <div>
        <ScrollToTop />
@@ -18,7 +29,7 @@ const Hotel = () => {
           Find the best places to stay, with filters to refine your search
         </p>
         <div className="flex justify-center relative z-10">
-          <SearchBar />
+          <SearchBar filters={filters} onFilterChange={handleFilterChange} />
         </div>
         {/* SVG for curved bottom */}
         <svg
@@ -33,7 +44,7 @@ const Hotel = () => {
           ></path>
         </svg>
       </div>
-      <PopularDestinations />
+      {/* <PopularDestinations /> */}
       <PopularHotels />
       <Faqs />
     </div>
