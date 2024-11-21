@@ -61,8 +61,17 @@ const PopularHotels = ({ filters }) => {
                       </p>
 
                       <div className="group inline-flex rounded-xl bg-blue-100 p-2 hover:bg-blue-200">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="group-hover:text-blue-500 h-4 w-4 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-                          <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="group-hover:text-blue-500 h-4 w-4 text-blue-400"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                        <path
+                          fillRule="evenodd"
+                          d="M12 4a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H5a1 1 0 110-2h6V5a1 1 0 011-1z"
+                          clipRule="evenodd"
+                        />
                         </svg>
                       </div>
                     </div>
