@@ -1,8 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Home from "./Home";
-import { TfiFaceSad } from "react-icons/tfi";
-import { Typewriter } from "react-simple-typewriter";
 
 const Error = () => {
   const navigate = useNavigate();
@@ -13,7 +10,7 @@ const Error = () => {
     <section className="bg-gray-300 h-screen py-6 flex gap-10 justify-center items-center">
       <div className="flex flex-col my-6 gap-5">
         <h1 className=" text-blue-500 text-5xl">
-          <Typewriter words={["Oops! Something Went Wrong."]} typeSpeed={70} />
+        Oops! Something Went Wrong.
         </h1>
         <div className="flex flex-col gap-2">
           <span className="text-lg">We looked everywhere for this page.</span>
