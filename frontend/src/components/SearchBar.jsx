@@ -1,11 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const SearchBar = ({ filters = {}, onFilterChange }) => {
-  const { location = "", checkInDate = "", checkOutDate = "", priceRange = "" } = filters;
+const SearchBar = ({ onFilterChange }) => {
+  const [filters, setFilters] = useState({
+    location: '',
+    checkInDate: '',
+    checkOutDate: '',
+    priceRange: '',
+  });
 
-  const handleFilterChange = (e) => {
-    const { name, value } = e.target;
-    onFilterChange({ ...filters, [name]: value });
+  const handleFilterChange = (key, value) => {
+    const updatedFilters = { ...filters, [key]: value };
+    setFilters(updatedFilters);
+    onFilterChange(updatedFilters); 
+  };
+
+  const handleSearchClick = () => {
+    if (onFilterChange) {
+      onFilterChange(filters); 
+    } else {
+      console.error('onFilterChange is not defined.');
+    }
   };
 
   return (
@@ -17,8 +31,8 @@ const SearchBar = ({ filters = {}, onFilterChange }) => {
           <input
             type="text"
             name="location"
-            value={location}
-            onChange={handleFilterChange}
+            value={filters.location}
+            onChange={(e) => handleFilterChange('location', e.target.value)}
             placeholder="Enter location"
             className="w-full sm:w-1/4 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -27,8 +41,8 @@ const SearchBar = ({ filters = {}, onFilterChange }) => {
           <input
             type="text"
             name="priceRange"
-            value={priceRange}
-            onChange={handleFilterChange}
+            value={filters.priceRange}
+            onChange={(e) => handleFilterChange('priceRange', e.target.value)}
             placeholder="Price range"
             className="w-full sm:w-1/4 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -37,8 +51,8 @@ const SearchBar = ({ filters = {}, onFilterChange }) => {
           <input
             type="date"
             name="checkInDate"
-            value={checkInDate}
-            onChange={handleFilterChange}
+            value={filters.checkInDate}
+            onChange={(e) => handleFilterChange('checkInDate', e.target.value)}
             className="w-full sm:w-1/4 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
@@ -46,8 +60,8 @@ const SearchBar = ({ filters = {}, onFilterChange }) => {
           <input
             type="date"
             name="checkOutDate"
-            value={checkOutDate}
-            onChange={handleFilterChange}
+            value={filters.checkOutDate}
+            onChange={(e) => handleFilterChange('checkOutDate', e.target.value)}
             className="w-full sm:w-1/4 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
@@ -55,7 +69,7 @@ const SearchBar = ({ filters = {}, onFilterChange }) => {
         {/* Search Button Below */}
         <div className="flex items-center justify-center mt-4">
           <button
-            onClick={() => onFilterChange(filters)}
+            onClick={handleSearchClick}
             className="w-full bg-blue-500 text-white p-4 rounded-xl hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             Search

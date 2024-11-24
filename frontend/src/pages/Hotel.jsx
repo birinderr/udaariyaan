@@ -51,7 +51,7 @@ const Hotel = () => {
           </svg>
         </div>
         {/* <PopularDestinations /> */}
-        <PopularHotels />
+        <PopularHotels filters={filters} />
         <Faqs />
       </div>
     );

@@ -45,19 +45,27 @@ export const getBookings = async (req, res) => {
 
 // Get all hotels
 export const getAllHotels = async (req, res) => {
-  const { location, checkInDate, checkOutDate, guests } = req.query;
+  const { location, checkInDate, checkOutDate, priceRange } = req.query;
   
   // Construct the filter object
   let filter = {};
   if (location) filter.location = new RegExp(location, 'i'); // Case-insensitive search
+  if (priceRange) {
+    const [minPrice, maxPrice] = priceRange.split("-").map(Number);
+    if (minPrice !== undefined && maxPrice !== undefined) {
+      filter.pricePerNight = { $gte: minPrice, $lte: maxPrice };
+    }
+  }
+  
   if (checkInDate && checkOutDate) {
-    filter.availability = {
-      $gte: new Date(checkInDate),
-      $lte: new Date(checkOutDate),
+    filter.availableDates = {
+      $elemMatch: {
+        startDate: { $lte: new Date(checkOutDate) },
+        endDate: { $gte: new Date(checkInDate) },
+      },
     };
   }
-  if (guests) filter.guests = { $gte: guests };
-
+  
   try {
     const hotels = await Hotel.find(filter);
     res.json(hotels);
