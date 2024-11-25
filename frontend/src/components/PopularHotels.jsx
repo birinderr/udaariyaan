@@ -30,7 +30,7 @@ const PopularHotels = ({ filters }) => {
     
 
     fetchHotels();
-  }, [filters]); // Re-fetch when filters change
+  }, [filters]); // Re-fetching when filters change
 
   return (
     <div>

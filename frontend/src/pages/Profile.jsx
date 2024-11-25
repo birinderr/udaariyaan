@@ -65,7 +65,7 @@ const Profile = () => {
       <div
         className="bg-white shadow-lg rounded-lg p-8 w-full max-w-md mt-[-50px]"
         style={{
-          zIndex: 10, // Ensure the card stays above the blue background
+          zIndex: 10, //the card stays above the blue background
         }}
       >
         <p className="text-lg font-semibold mb-4">Update Profile Information:</p>

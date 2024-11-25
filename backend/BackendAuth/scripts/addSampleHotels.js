@@ -3,10 +3,9 @@ import { Hotel } from '../models/hotel.model.js';
 import dotenv from 'dotenv';
 dotenv.config();
 
-console.log('Mongo URI:', process.env.MONGO_URI); // Check if it's loaded
+console.log('Mongo URI:', process.env.MONGO_URI);
 
 
-// Your MongoDB URI should be defined in your environment variable (MONGO_URI) already
 const MONGO_URI = process.env.Mongo_URI;
 
 const sampleHotels = [

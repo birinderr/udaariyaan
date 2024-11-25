@@ -9,7 +9,6 @@ import Hotel from "./pages/Hotel";
 import Login from "./components/Login";
 import Boooking from "./components/Boooking";
 import Table from "./components/table";
-import PopularDestinations from "./components/PopularDestinations";
 import Error from "./pages/Error";
 import Profile from "./pages/Profile";
 import FeedbackForm from "./pages/FeedbackForm";

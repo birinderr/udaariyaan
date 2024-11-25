@@ -15,7 +15,7 @@ export const signup = async (req,res) => {
         if(userAlreadyExists){
             return res.status(400).json({success:false, message: "User already exists", alert: "User Already Exists"});
         }
-        const hashedPassword = await bcryptjs.hash(password, 10);        ///  maybe remove
+        const hashedPassword = await bcryptjs.hash(password, 10);     
         const verificationToken = Math.floor(100000 + Math.random() * 900000).toString();
 
         const user = new User({

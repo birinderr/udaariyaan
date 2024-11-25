@@ -25,9 +25,9 @@ const SearchBar = ({ onFilterChange }) => {
   return (
     <div className="bg-white shadow-xl rounded-3xl p-8 md:p-12 mx-6 md:mx-12 mt-8 border-4 border-gray-300">
       <div className="flex flex-col gap-6">
-        {/* Inputs in Row */}
+
         <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
-          {/* Location */}
+
           <input
             type="text"
             name="location"
@@ -37,7 +37,7 @@ const SearchBar = ({ onFilterChange }) => {
             className="w-full sm:w-1/4 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          {/* Price Range */}
+
           <input
             type="text"
             name="priceRange"
@@ -47,7 +47,7 @@ const SearchBar = ({ onFilterChange }) => {
             className="w-full sm:w-1/4 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          {/* Check-in Date */}
+
           <input
             type="date"
             name="checkInDate"
@@ -56,7 +56,7 @@ const SearchBar = ({ onFilterChange }) => {
             className="w-full sm:w-1/4 p-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
 
-          {/* Check-out Date */}
+
           <input
             type="date"
             name="checkOutDate"
@@ -66,7 +66,7 @@ const SearchBar = ({ onFilterChange }) => {
           />
         </div>
 
-        {/* Search Button Below */}
+
         <div className="flex items-center justify-center mt-4">
           <button
             onClick={handleSearchClick}
