@@ -45,7 +45,7 @@ const PopularHotels = ({ filters }) => {
                     <img
                       src={hotel.imageUrl || 'https://via.placeholder.com/640x360'}
                       alt="Hotel Photo"
-                      className="transform transition-transform duration-300 ease-in-out hover:scale-110 hover:translate-y-2"
+                      className="h-[318px] w[263px] transform transition-transform duration-300 ease-in-out hover:scale-110 hover:translate-y-2"
                     />
                     <div className="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md opacity-90 hover:opacity-100 transition-opacity duration-300 ease-in-out">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
