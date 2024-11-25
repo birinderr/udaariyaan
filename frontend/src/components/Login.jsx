@@ -46,7 +46,7 @@ function Login() {
 
   const sliderRef = useRef(null);
   const formSectionRef = useRef(null);
-// login signup error!
+// login signup error
   const [loginEmailError, setLoginEmailError] = useState('');
   const [loginPasswordError, setLoginPasswordError] = useState('');
   const [signUpEmailError, setSignUpEmailError] = useState('');

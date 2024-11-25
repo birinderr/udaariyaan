@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { json, Link, useNavigate } from "react-router-dom";
 import { SlSocialFacebook } from "react-icons/sl";
 import { PiInstagramLogoLight } from "react-icons/pi";
 import { FaXTwitter } from "react-icons/fa6";
@@ -7,6 +7,7 @@ import ScrollToTop from "../components/ScrollToTop";
 import { Typewriter } from "react-simple-typewriter";
 import UseOnlineStatus from "../UseOnlineStatus.jsx";
 import OfflineCard from "../components/OfflineCard.jsx";
+import FeedbackCard from "../components/FeedbackCard.jsx";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,11 +18,34 @@ const Home = () => {
   const handlebookClick = () => {
     navigate("/flight");
   };
+  const [feeds, setFeeds] = useState([]);
+  const fetchData = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/feedback", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const shuffledFeeds = [...data].sort(() => 0.5 - Math.random());
+        setFeeds(shuffledFeeds.slice(0, 3));
+        console.log(shuffledFeeds.slice(0, 3));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    console.log("fetchData function called");
+
+    fetchData();
+  }, []);
   const useonlinestatus = UseOnlineStatus();
   if (useonlinestatus === false) {
-    return (
-      <OfflineCard />
-    );
+    return <OfflineCard />;
   } else {
     return (
       <div>
@@ -181,6 +205,7 @@ const Home = () => {
         </section>
 
         {/* testimonial section */}
+        {/*
         <section id="testimonials" className="py-12">
           <h2 className="text-3xl font-bold text-center mb-8">
             What Our Clients Say
@@ -231,6 +256,16 @@ const Home = () => {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+        */}
+        <section className="mt-7">
+          <h1 className="text-3xl font-bold text-center">What Our Customers Say</h1>
+
+          <div className="gap-10 py-10 flex flex-wrap">
+            {feeds.map((feed) => {
+              return <FeedbackCard name={feed.name} message={feed.message} />;
+            })}
           </div>
         </section>
       </div>

@@ -7,25 +7,30 @@ const PopularHotels = ({ filters }) => {
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        // Build query string from filters
-        const query = new URLSearchParams(filters).toString();
+        const query = new URLSearchParams(
+          Object.entries(filters).reduce((acc, [key, value]) => {
+            if (value) acc[key] = value;
+            return acc;
+          }, {})
+        ).toString();
+    
         const response = await axios.get(`http://localhost:3000/api/hotels?${query}`);
-
-        // Validate response data
         if (Array.isArray(response.data)) {
           setHotels(response.data);
         } else {
-          console.error('Unexpected response:', response.data);
+          console.error("Unexpected response:", response.data);
           setHotels([]);
         }
       } catch (error) {
-        console.error('Error fetching hotels:', error);
+        console.error("Error fetching hotels:", error);
         setHotels([]);
       }
     };
+    
+    
 
     fetchHotels();
-  }, [filters]); // Re-fetch when filters change
+  }, [filters]); // Re-fetching when filters change
 
   return (
     <div>
@@ -40,7 +45,7 @@ const PopularHotels = ({ filters }) => {
                     <img
                       src={hotel.imageUrl || 'https://via.placeholder.com/640x360'}
                       alt="Hotel Photo"
-                      className="transform transition-transform duration-300 ease-in-out hover:scale-110 hover:translate-y-2"
+                      className="h-[318px] w[263px] transform transition-transform duration-300 ease-in-out hover:scale-110 hover:translate-y-2"
                     />
                     <div className="absolute bottom-3 left-3 inline-flex items-center rounded-lg bg-white p-2 shadow-md opacity-90 hover:opacity-100 transition-opacity duration-300 ease-in-out">
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">

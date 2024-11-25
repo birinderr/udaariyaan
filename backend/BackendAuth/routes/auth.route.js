@@ -7,7 +7,7 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
 
-// Profile Routes
+// Profile page routes
 router.get("/me", getUserProfile);
 router.put("/update-profile", updateUserProfile);
 

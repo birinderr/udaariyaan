@@ -1,4 +1,3 @@
-// FilterSidebar.js
 import React, { useState } from 'react';
 
 const FilterSidebar = ({ setFilters }) => {

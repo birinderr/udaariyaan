@@ -19,11 +19,11 @@ const userSchema = new mongoose.Schema({
         required: false,
     },
     phone: {
-        type: String, // New field for phone number
+        type: String,
         required: false,
     },
     address: {
-        type: String, // New field for address
+        type: String, 
         required: false,
     },
     lastLogin: {
