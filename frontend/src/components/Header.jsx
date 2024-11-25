@@ -37,7 +37,7 @@ const Header = () => {
         </li>
         <li>
           <NavLink
-            to="/booking"
+            to="/flight"
             className={({ isActive }) =>
               isActive ? "text-blue-600" : "hover:text-blue-700 hover:underline"
             }

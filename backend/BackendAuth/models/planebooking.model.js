@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const planeschema=mongoose.Schema(
+    
     {
         departureCity:{
             type:String,
@@ -25,6 +26,7 @@ const planeschema=mongoose.Schema(
             type:String,
             required:true,
         }
+
     }
     
 

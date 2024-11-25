@@ -15,7 +15,7 @@ const Home = () => {
     navigate("/Hotel");
   };
   const handlebookClick = () => {
-    navigate("/booking");
+    navigate("/flight");
   };
   const useonlinestatus = UseOnlineStatus();
   if (useonlinestatus === false) {
