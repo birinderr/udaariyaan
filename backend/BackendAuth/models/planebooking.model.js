@@ -25,7 +25,8 @@ const planeschema=mongoose.Schema(
         price:{
             type:String,
             required:true,
-        }
+        },
+        imageUrl: { type: String, required: true },
 
     }
     
