@@ -14,28 +14,7 @@ router.post("/", async (req, res) => {
         res.status(400).json({ message: 'error' });
     }
 })
-// router.get("/",async(req,res)=>{
-//     try{
-//     const{departureCity, ArrivalCity, departureDate}=req.params;
-//     const flights=await Planeschema.find( {
-//         departureCity, ArrivalCity,         
-//         departuredate: { 
-//             $gte: new Date(departureDate), 
-//             $lte: new Date(departureDate).setDate(new Date(departureDate).getDate() + 1) 
-//         }
-//     }  )
-//     if(!flights)
-//     {
-//         res.status(400).json("no flights");
-//     }
-//     res.status(200).json({"data" : flights});
-// }
-// catch(err)
-// {
-//     res.status(400).json("error");
-// }
-// }
-// )
+
 
 
 
@@ -64,30 +43,7 @@ router.get('/', async (req, res) => {
 
         }
 
-        //    if (departuredate) {
-        //     const date = new Date(departuredate);
-        //     if (departuredate) {
-        //         const date = new Date(departuredate); // Convert input to Date object
-        //         const nextDay = new Date(date); // Clone the date
-        //         nextDay.setDate(nextDay.getDate() + 1); // Increment the day
-
-        //         console.log(date);
-        //         console.log(nextDay)
-        //         filter.departuredate = {
-        //             departuredate:{
-        //                 $gte: date, // Convert to ISO format
-        //                 $lt: nextDay
-        //             }
-        //            }
-        //            const flights=await Planeschema.find({
-
-        //                 departuredate:date
-
-
-        //            });
-        //            console.log(flights)
-        //     }
-        // }
+       
 
 
         const flights = await Planeschema.find(filter);
