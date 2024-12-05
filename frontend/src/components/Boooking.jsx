@@ -30,7 +30,6 @@ const Booking = () => {
     const handleSearch = async () => {
     setLoading(true);
       setError("");
-    // Set page loading true when search starts
 
      try {
        const query = new URLSearchParams(searchData).toString();
@@ -40,7 +39,6 @@ const Booking = () => {
        setError("Unable to fetch flights based on your search criteria.");
      } finally {
        setLoading(false);
-       // Set page loading false after search completes
      }
    };
    handleSearch();
