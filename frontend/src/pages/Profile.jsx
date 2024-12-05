@@ -3,7 +3,7 @@ import { useAuthStore } from "../store/authStore";
 import { FaArrowUp } from "react-icons/fa";
 
 const Profile = () => {
-  const { user, logout, isAuthenticated, updateUser } = useAuthStore();
+  const { user, logout, isAuthenticated, updateUser, isVerified } = useAuthStore();
   const [formData, setFormData] = useState({
     name: user?.name || "",
     phone: user?.phone || "",
@@ -26,8 +26,10 @@ const Profile = () => {
     }
   };
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !isVerified) {
+    console.log(isAuthenticated,isVerified);
     return (
+      
       <div
         className="flex flex-col items-center justify-center h-screen"
         style={{

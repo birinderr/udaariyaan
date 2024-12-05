@@ -4,7 +4,7 @@ import 'boxicons/css/boxicons.min.css';
 import { useAuthStore } from "../store/authStore.js";
 import { Link, useNavigate } from "react-router-dom";
 
-
+import axios from'axios';
 
 
 function Login() {
@@ -17,11 +17,24 @@ function Login() {
   const navigate = useNavigate();
 
 	const { login, isLoading, error, signup } = useAuthStore();
+  const handleSendOtp = async () => {
+    try {
+      const response = await axios.post('http://localhost:3000/otp/send-otp', { email });
+   
+      console.log("good");
+    } catch (error) {
+  console.log("error occured");
+    }
+  };
+  
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		await login(email, password);
-    navigate("/profile");
+   handleSendOtp();
+    navigate("/otp",{
+      state:{email}
+    });
 	};
 
 

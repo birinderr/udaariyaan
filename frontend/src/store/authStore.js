@@ -10,6 +10,7 @@ axios.defaults.withCredentials = true;
 export const useAuthStore = create((set) => ({
 	user: null,
 	isAuthenticated: false,
+	isVerified:false,
 	error: null,
 	isLoading: false,
 	isCheckingAuth: true,
@@ -89,6 +90,29 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
+
+	 handleVerifyOtp :async (email,otp) => {
+		try {
+		    const response = await axios.post('http://localhost:3000/otp/verify-otp', { email, otp });
+			console.log(response);
+			if(response.data.success==true){
+				set({
+					isAuthenticated:true,
+					isVerified: true,
+				// user: response.data.user,
+				// error: null,
+				// isLoading: false,
+				
+			    });
+			}
+		    else{
+				console.log("otp not verified");
+			}
+	
+		} catch (error) {
+		console.log("error ocured");
+		}
+	  },
 
 	logout: async () => {
 		set({ isLoading: true, error: null });

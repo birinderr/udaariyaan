@@ -3,11 +3,12 @@ import dotenv from "dotenv";
 import cors from "cors"
 import planerouter from"./routes/planebooking.js"
 import { connectDB } from "./db/connectDB.js"
-
+import payment from'./routes/pay.js';
 import authRoutes from "./routes/auth.route.js";
 import FeedbackRoutes from './routes/Feedback.route.js';
 import hotelRoutes from './routes/hotel.route.js';
 import cookieParser from 'cookie-parser';
+import otproute from'./routes/otp.route.js';
 
 dotenv.config();
 
@@ -24,11 +25,12 @@ app.use(cors(corsOptions));
 app.use(cookieParser())
 
 app.use(express.json())
+app.use("/otp",otproute);
 app.use("/flight",planerouter);
 app.use("/api/auth", authRoutes)
 app.use('/', FeedbackRoutes);
 app.use('/api',hotelRoutes);
-
+app.use('/pay',payment)
 app.listen(port, (err) => {
     if (err) {
         console.log(err);

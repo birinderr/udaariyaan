@@ -13,7 +13,7 @@ import Error from "./pages/Error";
 import Profile from "./pages/Profile";
 import FeedbackForm from "./pages/FeedbackForm";
 import { useAuthStore } from "./store/authStore";
-
+import Otp from"./components/otp";
 const App = () => {
   const { fetchUser } = useAuthStore();
 
@@ -33,6 +33,7 @@ const App = () => {
         <Route path="*" element={<Error />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/feedback" element={<FeedbackForm />} />
+        <Route path="/otp" element={<Otp />} />
       </Routes>
 
       <Footer />
