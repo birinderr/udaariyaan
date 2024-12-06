@@ -7,7 +7,7 @@ import { useAuthStore } from "../store/authStore"; // Import the auth store
 
 const Header = () => {
   const onlineStatus = UseOnlineStatus();
-  const { isAuthenticated } = useAuthStore(); // Get authentication state
+  const { isAuthenticated, isVerified } = useAuthStore(); // Get authentication state
 
   return (
     <div className="flex border-b-2 p-4 justify-between bg-blue-300">
@@ -95,7 +95,7 @@ const Header = () => {
             Profile
           </NavLink>
         </li>
-        {!isAuthenticated && ( // Conditionally render the Login button
+        {!isVerified && ( // Conditionally render the Login button
           <li>
             <NavLink
               to="/login"

@@ -3,7 +3,7 @@ import { useAuthStore } from "../store/authStore";
 import { FaArrowUp } from "react-icons/fa";
 
 const Profile = () => {
-  const { user, logout, isAuthenticated, updateUser, isVerified } = useAuthStore();
+  const { user, logout, isAuthenticated, updateUser, isVerified , isCheckingAuth } = useAuthStore();
   const [formData, setFormData] = useState({
     name: user?.name || "",
     phone: user?.phone || "",
@@ -26,34 +26,18 @@ const Profile = () => {
     }
   };
 
-  if (!isAuthenticated || !isVerified) {
-    console.log(isAuthenticated,isVerified);
-    return (
-      
-      <div
-        className="flex flex-col items-center justify-center h-screen"
-        style={{
-          background: "linear-gradient(to right, #f5f7fa, #c3cfe2)", // Gradient background
-        }}
-      >
-        <h1 className="text-2xl font-bold mb-4">You are not logged in.</h1>
-        <button
-          onClick={() => (window.location = "/login")}
-          className="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
-        >
-          Go to Login
-        </button>
-      </div>
-    );
-  }
+//   if (isCheckingAuth) {
+//     return <div>Loading...</div>; 
+// }
 
-  return (
-    <div
+  if (isAuthenticated && isVerified) {
+    return (
+      <div
       className="flex flex-col items-center justify-start min-h-screen"
       style={{
         background: "linear-gradient(to right, #f5f7fa, #c3cfe2)", // Page gradient background
       }}
-    >
+      >
       <div
         className="w-full text-white text-center py-20"
         style={{
@@ -130,5 +114,24 @@ const Profile = () => {
     </div>
   );
 };
+
+return (
+  <div
+    className="flex flex-col items-center justify-center h-screen"
+    style={{
+      background: "linear-gradient(to right, #f5f7fa, #c3cfe2)", // Gradient background
+    }}
+  >
+    <h1 className="text-2xl font-bold mb-4">You are not logged in.</h1>
+    <button
+      onClick={() => (window.location = "/login")}
+      className="px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700"
+    >
+      Go to Login
+    </button>
+  </div>
+);
+}
+
 
 export default Profile;

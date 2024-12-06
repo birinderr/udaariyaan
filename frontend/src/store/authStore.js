@@ -13,15 +13,16 @@ export const useAuthStore = create((set) => ({
 	isVerified:false,
 	error: null,
 	isLoading: false,
-	isCheckingAuth: true,
+	isCheckingAuth: false,
 	message: null,
 
 	fetchUser: async () => {
+		set({ isCheckingAuth: true });
 		try {
 			const response = await axios.get(`${API_URL}/me`);
-			set({ user: response.data.user, isAuthenticated: true, isCheckingAuth: false });
+			set({ user: response.data.user, isAuthenticated: true, isCheckingAuth: false , isVerified: true});
 		} catch (error) {
-			set({ user: null, isAuthenticated: false, isCheckingAuth: false });
+			set({ user: null, isAuthenticated: false, isCheckingAuth: false ,isVerified: false});
 			console.error("Error fetching user data", error);
 		}
 	},
@@ -81,7 +82,7 @@ export const useAuthStore = create((set) => ({
 			if (response.data.alert) {
 				alert(response.data.alert);
 			}
-			alert("You've Been Logged In")
+			alert("You've Been Logged In! Please Verify Yourself By Entering The OTP Sent On Your Mail.")
 		} catch (error) {
 			set({ error: error.response?.data?.message || "Error logging in", isLoading: false });
 			if (error.response?.data?.alert) {
@@ -106,11 +107,19 @@ export const useAuthStore = create((set) => ({
 			    });
 			}
 		    else{
+				set({
+					isAuthenticated:false,
+					isVerified:false,
+				})
 				console.log("otp not verified");
 			}
 	
 		} catch (error) {
-		console.log("error ocured");
+			set({
+				isAuthenticated:false,
+				isVerified:false,
+			})
+		    throw error;
 		}
 	  },
 
@@ -118,7 +127,7 @@ export const useAuthStore = create((set) => ({
 		set({ isLoading: true, error: null });
 		try {
 			await axios.post(`${API_URL}/logout`);
-			set({ user: null, isAuthenticated: false, error: null, isLoading: false });
+			set({ user: null, isAuthenticated: false, error: null, isLoading: false ,isVerified: false});
 			alert("You've Been Logged Out")
 			location.reload()
 		} catch (error) {
