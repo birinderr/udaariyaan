@@ -29,7 +29,7 @@ const Profile = () => {
 //   if (isCheckingAuth) {
 //     return <div>Loading...</div>; 
 // }
-
+console.log(isAuthenticated,isVerified)
   if (isAuthenticated && isVerified) {
     return (
       <div

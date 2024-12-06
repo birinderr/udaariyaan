@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { persist } from "zustand/middleware";
 
 const API_URL = import.meta.env.MODE === "development" ? "http://localhost:3000/api/auth" : "/api/auth";
 
@@ -7,7 +8,7 @@ axios.defaults.withCredentials = true;
 
 
 
-export const useAuthStore = create((set) => ({
+export const useAuthStore = create(persist((set) => ({
 	user: null,
 	isAuthenticated: false,
 	isVerified:false,
@@ -20,7 +21,7 @@ export const useAuthStore = create((set) => ({
 		set({ isCheckingAuth: true });
 		try {
 			const response = await axios.get(`${API_URL}/me`);
-			set({ user: response.data.user, isAuthenticated: true, isCheckingAuth: false , isVerified: true});
+			set({ user: response.data.user, isAuthenticated: true, isCheckingAuth: false});
 		} catch (error) {
 			set({ user: null, isAuthenticated: false, isCheckingAuth: false ,isVerified: false});
 			console.error("Error fetching user data", error);
@@ -135,4 +136,14 @@ export const useAuthStore = create((set) => ({
 			throw error;
 		}
 	},
-}));
+}),
+{
+	name:"auth-store",
+	partialize:(state) => ({
+		isAuthenticated:state.isAuthenticated,
+		isVerified:state.isVerified,
+		user:state.user,
+	}),
+}
+)
+);
