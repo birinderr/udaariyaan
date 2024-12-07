@@ -12,6 +12,7 @@ import Table from "./components/table";
 import Error from "./pages/Error";
 import Profile from "./pages/Profile";
 import FeedbackForm from "./pages/FeedbackForm";
+import Cart from "./pages/Cart";
 import { useAuthStore } from "./store/authStore";
 import Otp from"./components/otp";
 const App = () => {
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/hotel" element={<Hotel />} />
         <Route path="/login" element={<Login />} />
         <Route path="/flight" element={<Boooking />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<Error />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/feedback" element={<FeedbackForm />} />

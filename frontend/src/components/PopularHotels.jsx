@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useCartStore } from "../store/cartStore";
 
 const PopularHotels = ({ filters }) => {
   const [hotels, setHotels] = useState([]);
+  const { addToCart } = useCartStore();
 
   useEffect(() => {
     const fetchHotels = async () => {
@@ -40,7 +42,6 @@ const PopularHotels = ({ filters }) => {
           {Array.isArray(hotels) && hotels.length > 0 ? (
             hotels.map((hotel) => (
               <article key={hotel._id} className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl">
-                <a href="#">
                   <div className="relative flex items-end overflow-hidden rounded-xl">
                     <img
                       src={hotel.imageUrl || 'https://via.placeholder.com/640x360'}
@@ -64,24 +65,14 @@ const PopularHotels = ({ filters }) => {
                         <span className="text-lg font-bold text-blue-500">${hotel.pricePerNight}</span>
                         <span className="text-slate-400 text-sm">/night</span>
                       </p>
-
-                      <div className="group inline-flex rounded-xl bg-blue-100 p-2 hover:bg-blue-200">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="group-hover:text-blue-500 h-4 w-4 text-blue-400"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                        <path
-                          fillRule="evenodd"
-                          d="M12 4a1 1 0 011 1v6h6a1 1 0 110 2h-6v6a1 1 0 11-2 0v-6H5a1 1 0 110-2h6V5a1 1 0 011-1z"
-                          clipRule="evenodd"
-                        />
-                        </svg>
-                      </div>
+                      <button
+                        onClick={() => addToCart(hotel)}
+                        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                      >
+                        Add to Cart
+                      </button>
                     </div>
                   </div>
-                </a>
               </article>
             ))
           ) : (

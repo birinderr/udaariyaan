@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useCartStore } from "../store/cartStore";
 
 const Booking = () => {
   const [searchData, setSearchData] = useState({
@@ -8,6 +9,7 @@ const Booking = () => {
     departuredate: "",
   });
 
+  const { addToCart } = useCartStore();
   const [flights, setFlights] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -155,6 +157,12 @@ const Booking = () => {
                     <p className="mt-4 text-xl text-blue-600 font-bold">
                       ${flight.price}
                     </p>
+                    <button
+                      onClick={() => addToCart(flight)}
+                      className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    >
+                      Add to Cart
+                    </button>
                   </div>
                 </div>
               ))
