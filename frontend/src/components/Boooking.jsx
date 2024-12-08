@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useCartStore } from "../store/cartStore";
+import { useAuthStore } from "../store/authStore";
+import { useNavigate } from "react-router-dom";
 
 const Booking = () => {
   const [searchData, setSearchData] = useState({
@@ -13,6 +15,8 @@ const Booking = () => {
   const [flights, setFlights] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { isVerified } = useAuthStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllFlights = async () => {
@@ -30,20 +34,22 @@ const Booking = () => {
   }, []);
   useEffect(() => {
     const handleSearch = async () => {
-    setLoading(true);
+      setLoading(true);
       setError("");
 
-     try {
-       const query = new URLSearchParams(searchData).toString();
-       const response = await axios.get(`http://localhost:3000/flight?${query}`);
-       setFlights(response.data.data);
-     } catch (err) {
-       setError("Unable to fetch flights based on your search criteria.");
-     } finally {
-       setLoading(false);
-     }
-   };
-   handleSearch();
+      try {
+        const query = new URLSearchParams(searchData).toString();
+        const response = await axios.get(
+          `http://localhost:3000/flight?${query}`
+        );
+        setFlights(response.data.data);
+      } catch (err) {
+        setError("Unable to fetch flights based on your search criteria.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    handleSearch();
   }, [searchData]);
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -157,12 +163,23 @@ const Booking = () => {
                     <p className="mt-4 text-xl text-blue-600 font-bold">
                       ${flight.price}
                     </p>
-                    <button
-                      onClick={() => addToCart(flight)}
-                      className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    >
-                      Add to Cart
-                    </button>
+                    {isVerified ? (
+                      <button
+                        onClick={() => addToCart(flight)}
+                        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                      >
+                        Add to Cart
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          navigate("/login");
+                        }}
+                        className="mt-4 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                      >
+                        Please login
+                      </button>
+                    )}
                   </div>
                 </div>
               ))

@@ -4,10 +4,12 @@ import UseOnlineStatus from "../UseOnlineStatus";
 import { HiStatusOffline } from "react-icons/hi";
 import { HiStatusOnline } from "react-icons/hi";
 import { useAuthStore } from "../store/authStore"; // Import the auth store
+import { useCartStore } from "../store/cartStore";
 
 const Header = () => {
   const onlineStatus = UseOnlineStatus();
   const { isAuthenticated, isVerified } = useAuthStore(); // Get authentication state
+  const { cart } = useCartStore();
 
   return (
     <div className="flex border-b-2 p-4 justify-between bg-blue-300">
@@ -65,6 +67,7 @@ const Header = () => {
             Cabs
           </NavLink>
         </li>
+
         <li>
           <NavLink
             to="/about"
@@ -106,6 +109,21 @@ const Header = () => {
               }
             >
               Login
+            </NavLink>
+          </li>
+        )}
+
+        {isVerified && ( // Conditionally render the Login button
+          <li>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-blue-600"
+                  : "hover:text-blue-700 hover:underline"
+              }
+            >
+              Cart {cart.length}
             </NavLink>
           </li>
         )}
