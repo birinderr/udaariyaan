@@ -62,7 +62,7 @@ const Home = () => {
           <div className="flex justify-center items-center h-full bg-black bg-opacity-30 ">
             <div className="text-center text-white">
               <h2 className="text-4xl font-bold mb-4">
-                Udaariyaan -
+                <span className="text-orange-400">U</span>daariyaan -
                 <Typewriter
                   words={[
                     " Explore the World with Ease",
@@ -85,7 +85,9 @@ const Home = () => {
 
         {/* destination section */}
         <section id="destinations" className="py-12 ">
-          <h2 className="text-3xl font-bold text-center mb-8">Book tickets</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">
+            Travel Essentials
+          </h2>
           <div className="flex justify-evenly">
             <div
               className="w-[400px] border  p-4 flex flex-col gap-3 shadow-lg hover:scale-105 duration-300 hover:cursor-pointer"
@@ -98,10 +100,7 @@ const Home = () => {
                 alt="airplane"
               />
               <h1 className="text-lg font-bold">Airplane tickets booking</h1>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
-                nulla!
-              </p>
+              <p>Book your flights easily and travel anywhere.</p>
               <button className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700">
                 Book now
               </button>
@@ -117,10 +116,7 @@ const Home = () => {
                 alt="hotel"
               />
               <h1 className="text-lg font-bold">Hotel booking</h1>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
-                nulla!
-              </p>
+              <p>Find and reserve the best hotels for your stay.</p>
               <button className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700">
                 Book now
               </button>
@@ -133,10 +129,7 @@ const Home = () => {
                 alt="cabs"
               />
               <h1 className="text-lg font-bold">Cabs Booking</h1>
-              <p className="">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Qui,
-                nulla!
-              </p>
+              <p className="">Book a cab and enjoy convenient travel.</p>
               <button className="bg-blue-600 py-2 px-3 w-full rounded-full text-white hover:bg-blue-700">
                 Book now
               </button>
@@ -260,7 +253,9 @@ const Home = () => {
         </section>
         */}
         <section className="mt-7">
-          <h1 className="text-3xl font-bold text-center">What Our Customers Say</h1>
+          <h1 className="text-3xl font-bold text-center">
+            What Our Customers Say
+          </h1>
 
           <div className="gap-10 py-10 flex flex-wrap">
             {feeds.map((feed) => {

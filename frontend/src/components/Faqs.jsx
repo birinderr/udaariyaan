@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Faqs = () => {
   return (
@@ -12,42 +12,40 @@ const Faqs = () => {
           <div className="flow-root mt-12 sm:mt-16">
             <div className="divide-y divide-gray-200 -my-9">
               <div className="py-9">
-                <p className="text-xl font-semibold text-black">How to create an account?</p>
-                <p className="mt-3 text-base text-gray-600">
-                  Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia consequat
-                  duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+                <p className="text-xl font-semibold text-black">
+                  How to create an account?
                 </p>
                 <p className="mt-3 text-base text-gray-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                  ex ea commodo consequat.
+                  Creating an account is simple. Click on the "Sign Up" button,
+                  fill in your details, and confirm your email address to get
+                  started.
                 </p>
               </div>
 
               <div className="py-9">
-                <p className="text-xl font-semibold text-black">What payment method do you support?</p>
+                <p className="text-xl font-semibold text-black">
+                  What payment method do you support?
+                </p>
                 <p className="mt-3 text-base text-gray-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim
-                  veniam.
+                  We support multiple payment methods, including credit/debit
+                  cards, UPI, net banking, and popular digital wallets like
+                  PayPal and Google Pay.
                 </p>
               </div>
 
               <div className="py-9">
-                <p className="text-xl font-semibold text-black">What payment method do you support?</p>
-                <p className="mt-3 text-base text-gray-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                  ex ea commodo consequat.
+                <p className="text-xl font-semibold text-black">
+                  How do you provide support?
                 </p>
-              </div>
-
-              <div className="py-9">
-                <p className="text-xl font-semibold text-black">How do you provide support?</p>
                 <p className="mt-3 text-base text-gray-600">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt{' '}
-                  <a href="#" title="" className="text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline">
-                    support@Celebration.com
+                  We offer 24/7 customer support via email, live chat, and
+                  phone. For further assistance, reach out to us at{" "}
+                  <a
+                    href="#"
+                    title=""
+                    className="text-blue-600 transition-all duration-200 hover:text-blue-700 focus:text-blue-700 hover:underline"
+                  >
+                    support@celebration.com.
                   </a>
                 </p>
               </div>

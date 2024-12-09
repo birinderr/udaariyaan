@@ -17,7 +17,9 @@ const Footer = () => {
           A comprehensive travel ticket booking platform designed <br /> to make
           travel planning easy, convenient, and accessible <br /> for everyone.
           Built with a user-friendly interface.
-          <p className="text-right">- Patrick Victoria CEO</p>
+          <p className="text-right font-semibold">
+            - BharatDhiman & BirinderSingh
+          </p>
         </div>
       </div>
       <div className="flex flex-col gap-5 items-start">
@@ -51,13 +53,13 @@ const Footer = () => {
           <div className="flex gap-2 items-center">
             {" "}
             <FaHouse className="text-xl" />
-            GlassGlow Dr 40Fe 72.
+            Haryana, Ambala Cantt
           </div>
           <div className="flex gap-2 items-center">
-            <FaMobile className="text-xl" /> 1234567890
+            <FaMobile className="text-xl" /> 9876543210
           </div>
           <div className="flex gap-2 items-center">
-            <IoMdMail className="text-xl" /> contact@example.com
+            <IoMdMail className="text-xl" /> udaariyaancontact@gmail.com
           </div>
         </div>
       </div>
