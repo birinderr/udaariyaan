@@ -4,7 +4,7 @@ import { useCartStore } from "../store/cartStore";
 import { useAuthStore } from "../store/authStore";
 import { useNavigate } from "react-router-dom";
 
-const Booking = () => {
+const Boooking = () => {
   const [searchData, setSearchData] = useState({
     departureCity: "",
     ArrivalCity: "",
@@ -195,4 +195,4 @@ const Booking = () => {
   );
 };
 
-export default Booking;
+export default Boooking;
