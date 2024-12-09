@@ -9,7 +9,7 @@ import FeedbackRoutes from './routes/Feedback.route.js';
 import hotelRoutes from './routes/hotel.route.js';
 import cookieParser from 'cookie-parser';
 import otproute from'./routes/otp.route.js';
-
+import confirm  from'./routes/email.route.js';
 dotenv.config();
 
 const app = express();
@@ -31,6 +31,7 @@ app.use("/api/auth", authRoutes)
 app.use('/', FeedbackRoutes);
 app.use('/api',hotelRoutes);
 app.use('/pay',payment)
+app.use('/send',confirm);
 app.listen(port, (err) => {
     if (err) {
         console.log(err);

@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import FeedbackForm from "./pages/FeedbackForm";
 import Cart from "./pages/Cart";
 import { useAuthStore } from "./store/authStore";
+import Confirm from'./components/email';
 import Otp from"./components/otp";
 const App = () => {
   const { fetchUser } = useAuthStore();
@@ -36,6 +37,7 @@ const App = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/feedback" element={<FeedbackForm />} />
         <Route path="/otp" element={<Otp />} />
+        <Route path="/confirm" element={<Confirm />} />
       </Routes>
 
       <Footer />

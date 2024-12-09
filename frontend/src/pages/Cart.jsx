@@ -1,15 +1,24 @@
 import React from "react";
 import { useCartStore } from "../store/cartStore";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+
   const { cart, addToCart, removeFromCart } = useCartStore();
 
   // Calculate the total amount
+  
   const totalAmount = cart.reduce((total, item) => {
     const price = item.price || item.pricePerNight; // Use price or pricePerNight
     return total + price * item.quantity;
   }, 0);
+  const navigate=useNavigate()
+  const proceed=async(e)=>{
+    navigate("/confirm",{
+      state:{totalAmount},
+    })
+  }
 
   return (
     <div className="min-h-screen py-16">
@@ -17,6 +26,7 @@ const Cart = () => {
         {/* Total Amount Section */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-4xl font-bold">Your Bookings</h1>
+          <button onClick={proceed}>Procced to pay</button>
           {cart.length > 0 && (
             <div className="text-right">
               <h2 className="text-2xl font-bold text-gray-800">
