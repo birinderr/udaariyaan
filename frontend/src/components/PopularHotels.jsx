@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const PopularHotels = ({ filters }) => {
   const [hotels, setHotels] = useState([]);
-  const { addToCart } = useCartStore();
+  const { addToCart, cart, removeFromCart } = useCartStore();
   const { isVerified } = useAuthStore();
   const navigate = useNavigate();
 
@@ -36,7 +36,13 @@ const PopularHotels = ({ filters }) => {
     };
 
     fetchHotels();
-  }, [filters]); // Re-fetching when filters change
+  }, [filters]);
+
+  // Helper function to get the quantity of a hotel in the cart
+  const getCartItemQuantity = (id) => {
+    const cartItem = cart.find((item) => item._id === id);
+    return cartItem ? cartItem.quantity : 0;
+  };
 
   return (
     <div>
@@ -88,12 +94,32 @@ const PopularHotels = ({ filters }) => {
                       <span className="text-slate-400 text-sm">/night</span>
                     </p>
                     {isVerified ? (
-                      <button
-                        onClick={() => addToCart(hotel)}
-                        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                      >
-                        Book now
-                      </button>
+                      getCartItemQuantity(hotel._id) > 0 ? (
+                        <div className="flex items-center">
+                          <button
+                            onClick={() => removeFromCart(hotel._id)}
+                            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                          >
+                            -
+                          </button>
+                          <span className="mx-4">
+                            {getCartItemQuantity(hotel._id)}
+                          </span>
+                          <button
+                            onClick={() => addToCart(hotel)}
+                            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                          >
+                            +
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => addToCart(hotel)}
+                          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        >
+                          Book now
+                        </button>
+                      )
                     ) : (
                       <button
                         onClick={() => {

@@ -11,7 +11,7 @@ const Boooking = () => {
     departuredate: "",
   });
 
-  const { addToCart } = useCartStore();
+  const { addToCart, cart, removeFromCart } = useCartStore();
   const [flights, setFlights] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -32,6 +32,7 @@ const Boooking = () => {
     };
     fetchAllFlights();
   }, []);
+
   useEffect(() => {
     const handleSearch = async () => {
       setLoading(true);
@@ -51,6 +52,7 @@ const Boooking = () => {
     };
     handleSearch();
   }, [searchData]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setSearchData((prevData) => ({
@@ -59,9 +61,13 @@ const Boooking = () => {
     }));
   };
 
+  const getCartItemQuantity = (id) => {
+    const cartItem = cart.find((item) => item._id === id);
+    return cartItem ? cartItem.quantity : 0;
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200 flex flex-col items-center py-16">
-      {/* Header Section */}
       <div className="text-center px-6 mb-12">
         <h1 className="text-5xl md:text-6xl font-extrabold text-gray-900 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 drop-shadow-lg">
           Find Your Perfect Flight
@@ -71,7 +77,6 @@ const Boooking = () => {
         </p>
       </div>
 
-      {/* Search Form */}
       <div className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-4xl mb-16">
         <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
@@ -103,25 +108,15 @@ const Boooking = () => {
               className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md placeholder-gray-500"
             />
           </div>
-          {/* <div className="md:col-span-2 text-center">
-            <button
-              type="button"
-              className="w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-indigo-700 transition-transform "
-            >
-              Search Flights
-            </button>
-          </div> */}
         </form>
       </div>
 
-      {/* Error Message */}
       {error && (
         <div className="w-full max-w-lg bg-red-100 border-l-8 border-red-600 text-red-700 p-6 rounded-lg shadow-lg mb-6">
           <p className="text-center text-lg font-semibold">{error}</p>
         </div>
       )}
 
-      {/* Flight Listings */}
       <div className="w-full max-w-6xl px-4">
         {loading ? (
           <div className="flex justify-center py-12">
@@ -130,9 +125,9 @@ const Boooking = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {Array.isArray(flights) && flights.length > 0 ? (
-              flights.map((flight, index) => (
+              flights.map((flight) => (
                 <div
-                  key={index}
+                  key={flight._id}
                   className="bg-white rounded-2xl shadow-md hover:shadow-lg transform hover:scale-105 transition-all"
                 >
                   <img
@@ -145,31 +140,42 @@ const Boooking = () => {
                       {flight.Flightname}
                     </h3>
                     <p className="mt-2 text-gray-600">
-                      <span className="font-medium">From:</span>{" "}
-                      {flight.departureCity}
+                      From: {flight.departureCity} To: {flight.ArrivalCity}
                     </p>
                     <p className="mt-1 text-gray-600">
-                      <span className="font-medium">To:</span>{" "}
-                      {flight.ArrivalCity}
-                    </p>
-                    <p className="mt-1 text-gray-600">
-                      <span className="font-medium">Departure:</span>{" "}
+                      Departure:{" "}
                       {new Date(flight.departuredate).toLocaleDateString()}
-                    </p>
-                    <p className="mt-1 text-gray-600">
-                      <span className="font-medium">Arrival Time:</span>{" "}
-                      {flight.ArrivalTime}
                     </p>
                     <p className="mt-4 text-xl text-blue-600 font-bold">
                       ${flight.price}
                     </p>
                     {isVerified ? (
-                      <button
-                        onClick={() => addToCart(flight)}
-                        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                      >
-                        Book now
-                      </button>
+                      getCartItemQuantity(flight._id) > 0 ? (
+                        <div className="flex items-center mt-4">
+                          <button
+                            onClick={() => removeFromCart(flight._id)}
+                            className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                          >
+                            -
+                          </button>
+                          <span className="mx-4">
+                            {getCartItemQuantity(flight._id)}
+                          </span>
+                          <button
+                            onClick={() => addToCart(flight)}
+                            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+                          >
+                            +
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          onClick={() => addToCart(flight)}
+                          className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                        >
+                          Book now
+                        </button>
+                      )
                     ) : (
                       <button
                         onClick={() => {
