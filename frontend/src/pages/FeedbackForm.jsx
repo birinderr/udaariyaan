@@ -4,7 +4,7 @@ import FeedbackCard from "../components/FeedbackCard";
 import ScrollToTop from "../components/ScrollToTop.jsx";
 import UseOnlineStatus from "../UseOnlineStatus.jsx";
 import OfflineCard from "../components/OfflineCard.jsx";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const FeedbackForm = () => {
@@ -32,7 +32,7 @@ const FeedbackForm = () => {
       }
       setName("");
       setMessage("");
-      toast("Feedback Sent! Thanks For Your Feedback.")
+      toast("Feedback Sent! Thanks For Your Feedback.");
     } catch (error) {
       console.log(error);
     }
@@ -129,9 +129,9 @@ const FeedbackForm = () => {
           </div>
           <div>
             <img
-              src="./feedback.jpg"
+              src="./feedbackImg.png"
               alt="feedbackImg"
-              className="h-[500px] w-[400px] pt-5"
+              className="h-[400px] w-[500px] pt-5"
             />
           </div>
         </div>
