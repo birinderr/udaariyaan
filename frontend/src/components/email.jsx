@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
+
 const BookingForm = () => {
-  const location=useLocation();
-  const {totalAmount}=location.state;
-  const {email}=location.state
+  const location = useLocation();
+  const { totalAmount } = location.state;
+  const { email } = location.state;
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    bookingId: '',
     checkIn: '',
     checkOut: '',
     hotelName: '',
@@ -23,23 +24,24 @@ const BookingForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Generate random booking ID
+    const randomBookingId = `BOOK-${Math.floor(100000 + Math.random() * 900000)}`;
+
     try {
       const response = await axios.post('http://localhost:3000/send/sendbooking', {
         email: formData.email,
         bookingDetails: {
           name: formData.name,
-          bookingId: formData.bookingId,
-          checkIn: formData.checkIn,
-          checkOut: formData.checkOut,
-          hotelName: formData.hotelName,
+          bookingId: randomBookingId, // Use the generated booking ID
+       
         },
       });
 
       toast(response.data.message);
+
       setFormData({
         name: '',
         email: '',
-        bookingId: '',
         checkIn: '',
         checkOut: '',
         hotelName: '',
@@ -67,7 +69,7 @@ const BookingForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Email:{email}</label>
+          <label className="block text-sm font-medium mb-2">Email: {email}</label>
           <input
             type="email"
             name="email"
@@ -79,50 +81,7 @@ const BookingForm = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Booking ID</label>
-          <input
-            type="text"
-            name="bookingId"
-            value={formData.bookingId}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-            placeholder="Enter booking ID"
-            required
-          />
-        </div>
-        {/* <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Check-In Date</label>
-          <input
-            type="date"
-            name="checkIn"
-            value={formData.checkIn}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div> */}
-        {/* <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Check-Out Date</label>
-          <input
-            type="date"
-            name="checkOut"
-            value={formData.checkOut}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-            required
-          />
-        </div> */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Total amount:{totalAmount}</label>
-          {/* <input
-            type="text"
-            name="Total amount"
-            value={formData.hotelName}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-            placeholder="Enter amount"
-            required
-          /> */}
+          <label className="block text-sm font-medium mb-2">Total amount: {totalAmount}</label>
         </div>
         <button
           type="submit"

@@ -19,8 +19,7 @@ export const sendBookingConfirmation = async (email, bookingDetails) => {
         <p>Hi ${name},</p>
         <p>Your booking with ID <strong>${bookingId}</strong> is confirmed!</p>
   
-        <p><strong>Check-in:</strong> ${checkIn}</p>
-        <p><strong>Check-out:</strong> ${checkOut}</p>
+        
         <p>Thank you for choosing us!</p>
       `,
     }
