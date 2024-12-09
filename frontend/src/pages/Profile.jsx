@@ -93,9 +93,9 @@ console.log(isAuthenticated,isVerified)
             Update
           </button>
         </form>
-        {message && (
+        {/* {message && (
           <p className="mt-4 text-center text-green-600">{message}</p>
-        )}
+        )} */}
       </div>
       <button
         onClick={logout}

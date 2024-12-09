@@ -4,6 +4,8 @@ import FeedbackCard from "../components/FeedbackCard";
 import ScrollToTop from "../components/ScrollToTop.jsx";
 import UseOnlineStatus from "../UseOnlineStatus.jsx";
 import OfflineCard from "../components/OfflineCard.jsx";
+import { toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const FeedbackForm = () => {
   const [name, setName] = useState("");
@@ -30,6 +32,7 @@ const FeedbackForm = () => {
       }
       setName("");
       setMessage("");
+      toast("Feedback Sent! Thanks For Your Feedback.")
     } catch (error) {
       console.log(error);
     }
