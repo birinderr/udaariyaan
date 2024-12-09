@@ -123,7 +123,7 @@ const Header = () => {
                   : "hover:text-blue-700 hover:underline"
               }
             >
-              Cart {cart.length}
+              Bookings: {cart.length}
             </NavLink>
           </li>
         )}

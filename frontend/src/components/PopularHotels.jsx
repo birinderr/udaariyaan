@@ -42,7 +42,7 @@ const PopularHotels = ({ filters }) => {
     <div>
       <section className="py-20">
         <h1 className="mb-12 text-center font-sans text-5xl font-bold text-gray-900">
-          Popular Hotels
+          Hotels
         </h1>
         <div className="mx-auto grid max-w-screen-xl grid-cols-1 gap-6 p-6 md:grid-cols-2 lg:grid-cols-3">
           {Array.isArray(hotels) && hotels.length > 0 ? (
@@ -92,7 +92,7 @@ const PopularHotels = ({ filters }) => {
                         onClick={() => addToCart(hotel)}
                         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                       >
-                        Add to Cart
+                        Book now
                       </button>
                     ) : (
                       <button

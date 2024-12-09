@@ -103,14 +103,14 @@ const Booking = () => {
               className="w-full px-6 py-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-md placeholder-gray-500"
             />
           </div>
-          <div className="md:col-span-2 text-center">
+          {/* <div className="md:col-span-2 text-center">
             <button
               type="button"
-              className="w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-indigo-700 transition-transform transform hover:scale-105"
+              className="w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold text-lg rounded-xl shadow-lg hover:shadow-xl hover:from-blue-600 hover:to-indigo-700 transition-transform "
             >
               Search Flights
             </button>
-          </div>
+          </div> */}
         </form>
       </div>
 
@@ -168,7 +168,7 @@ const Booking = () => {
                         onClick={() => addToCart(flight)}
                         className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
                       >
-                        Add to Cart
+                        Book now
                       </button>
                     ) : (
                       <button
