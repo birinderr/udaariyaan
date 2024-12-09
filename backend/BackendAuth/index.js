@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from "dotenv";
 import cors from "cors"
 import planerouter from"./routes/planebooking.js"
+import bookingRoutes from "./routes/savedbooking.route.js";
 import { connectDB } from "./db/connectDB.js"
 import payment from'./routes/pay.js';
 import authRoutes from "./routes/auth.route.js";
@@ -25,6 +26,7 @@ app.use(cors(corsOptions));
 app.use(cookieParser())
 
 app.use(express.json())
+app.use("/api/booking", bookingRoutes);
 app.use("/otp",otproute);
 app.use("/flight",planerouter);
 app.use("/api/auth", authRoutes)
