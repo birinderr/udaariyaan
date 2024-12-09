@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../store/authStore";
 import { FaArrowUp } from "react-icons/fa";
+// import { useNavigate } from "react-router-dom";
+
 
 const Profile = () => {
   const { user, logout, isAuthenticated, updateUser, isVerified , isCheckingAuth } = useAuthStore();
@@ -9,6 +11,14 @@ const Profile = () => {
     phone: user?.phone || "",
     address: user?.address || "",
   });
+  // const navigate=useNavigate()
+  // const handleuserdetails=async(e)=>{
+  //   navigate("/confirm",{
+  //     state:{ name },
+  //     state:{ phone },
+
+  //   })
+  // }
   const [message, setMessage] = useState("");
 
   const handleChange = (e) => {

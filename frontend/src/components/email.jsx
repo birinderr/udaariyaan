@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useLocation } from "react-router-dom";
 import { toast } from 'react-toastify';
+import { useAuthStore } from "../store/authStore";
+
 
 const BookingForm = () => {
   const location = useLocation();
+  const { user } = useAuthStore();
   const { totalAmount } = location.state;
   const { email } = location.state;
 
@@ -29,11 +32,13 @@ const BookingForm = () => {
 
     try {
       const response = await axios.post('http://localhost:3000/send/sendbooking', {
-        email: formData.email,
+        email: user.email,
         bookingDetails: {
-          name: formData.name,
+          name: user.name,
           bookingId: randomBookingId, // Use the generated booking ID
-       
+          totalAmount: totalAmount,
+          address:user.address,
+          phone:user.phone,
         },
       });
 
@@ -42,9 +47,6 @@ const BookingForm = () => {
       setFormData({
         name: '',
         email: '',
-        checkIn: '',
-        checkOut: '',
-        hotelName: '',
       });
     } catch (error) {
       console.error('Error sending email:', error);
@@ -57,37 +59,25 @@ const BookingForm = () => {
       <h1 className="text-2xl font-bold mb-5">Booking Confirmation Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Name</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-            placeholder="Enter your name"
-            required
-          />
+          <span className="block text-sm font-medium mb-2">Name: {user.name}</span>
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Email: {email}</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-            placeholder="Enter recipient's email"
-            required
-          />
+          <span className="block text-sm font-medium mb-2">Email: {user.email}</span>
         </div>
         <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">Total amount: {totalAmount}</label>
+          <span className="block text-sm font-medium mb-2">Phone: {user.phone}</span>
+        </div>
+        <div className="mb-4">
+          <span className="block text-sm font-medium mb-2">Address: {user.address}</span>
+        </div>
+        <div className="mb-4">
+          <span className="block text-sm font-medium mb-2">Total amount: ${totalAmount}</span>
         </div>
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
         >
-          Send Confirmation Email
+          Confirm Booking
         </button>
       </form>
     </div>

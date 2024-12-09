@@ -8,19 +8,29 @@ const transporter=nodemailer.createTransport({
     },
 })
 export const sendBookingConfirmation = async (email, bookingDetails) => {
-    const { name, bookingId, checkIn, checkOut } = bookingDetails;
+    const { name, bookingId, totalAmount, address, phone } = bookingDetails;
   
     const mailOptions = {
-      from: '"Your Company" <your-email@gmail.com>', // Sender address
+      from: '"Udaariyaan" <your-email@gmail.com>', // Sender address
       to: email, // Recipient's email
-      subject: 'Booking Confirmation', // Subject line
+      subject: 'Payment Confirmation for Your Ticket Booking', // Subject line
       html: `
         <h1>Booking Confirmation</h1>
-        <p>Hi ${name},</p>
-        <p>Your booking with ID <strong>${bookingId}</strong> is confirmed!</p>
+        <p>Dear ${name},</p>
+        <p>Thank You for Booking Your Ticket With Us! We are Pleased To Confirmed That Your Payment Has Successfully Proccessed.</p>
+        <p>Below Are Your Details</p>
+        <p>Your Booking ID <strong>${bookingId}</strong></p>
+        <p>Your Phone Number: ${phone}</p>
+        <p>Your Address: ${address}</p>
+        <p>Total Amount Paid:$ ${totalAmount}</p>
+
   
         
-        <p>Thank you for choosing us!</p>
+        <p>Keep This E-mail As Proof Of Your Payment!</p>
+        <p>Best Regards, </p>
+        <p>BharatDhiman & <strong>BirinderSingh</strong></p>
+        <p>CEO</p>
+        <p>9876543210</p>
       `,
     }
     try {

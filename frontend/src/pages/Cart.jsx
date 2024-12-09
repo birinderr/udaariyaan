@@ -26,12 +26,12 @@ const Cart = () => {
         {/* Total Amount Section */}
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-4xl font-bold">Your Bookings</h1>
-          <button onClick={proceed}>Procced to pay</button>
           {cart.length > 0 && (
             <div className="text-right">
               <h2 className="text-2xl font-bold text-gray-800">
                 Total: ${totalAmount.toFixed(2)}
               </h2>
+              <button className="bg-green-500 py-1 px-2 text-xl rounded text-white text-center hover:bg-green-600 font-semibold " onClick={proceed}>Procced to pay</button>
             </div>
           )}
         </div>
