@@ -5,10 +5,26 @@ import { Link } from "react-router-dom";
 const Cart = () => {
   const { cart, addToCart, removeFromCart } = useCartStore();
 
+  // Calculate the total amount
+  const totalAmount = cart.reduce((total, item) => {
+    const price = item.price || item.pricePerNight; // Use price or pricePerNight
+    return total + price * item.quantity;
+  }, 0);
+
   return (
     <div className="min-h-screen py-16">
       <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-8">Your Bookings</h1>
+        {/* Total Amount Section */}
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-4xl font-bold">Your Bookings</h1>
+          {cart.length > 0 && (
+            <div className="text-right">
+              <h2 className="text-2xl font-bold text-gray-800">
+                Total: ${totalAmount.toFixed(2)}
+              </h2>
+            </div>
+          )}
+        </div>
         <hr className="mb-6 font-bold" />
         {cart.length === 0 ? (
           <div className="flex justify-center items-center flex-col">
@@ -18,7 +34,7 @@ const Cart = () => {
                 amazing plans!
               </Link>
             </p>
-            <img src="./bookingimg.avif" alt="" />
+            <img src="./bookingimg.avif" alt="Empty Cart" />
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -41,7 +57,6 @@ const Cart = () => {
                       item.departureCity + " to " + item.ArrivalCity}
                   </p>
                   <p className="text-blue-600 font-bold">
-                    {/* Update price to reflect quantity */}
                     ${((item.price || item.pricePerNight) * item.quantity).toFixed(2)}
                   </p>
                   <div className="flex items-center mt-4">
