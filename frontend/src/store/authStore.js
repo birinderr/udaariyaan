@@ -95,37 +95,39 @@ export const useAuthStore = create(persist((set) => ({
 		}
 	},
 
-	 handleVerifyOtp :async (email,otp) => {
-		try {
-		    const response = await axios.post('http://localhost:3000/otp/verify-otp', { email, otp });
-			console.log(response);
-			if(response.data.success==true){
-				set({
-					isAuthenticated:true,
-					isVerified: true,
-				// user: response.data.user,
-				// error: null,
-				// isLoading: false,
-				
-			});
-			toast("You've Been Logged In!");
-			}
-		    else{
+		handleVerifyOtp :async (email,otp) => {
+			try {
+				const response = await axios.post('http://localhost:3000/otp/verify-otp', { email, otp });
+				console.log(response);
+				if(response.data.success==true){
+					set({
+						isAuthenticated:true,
+						isVerified: true,
+					// user: response.data.user,
+					// error: null,
+					// isLoading: false,
+					
+				});
+				toast("You've Been Logged In!");
+				return { status: 200 };
+				}
+				else{
+					set({
+						isAuthenticated:false,
+						isVerified:false,
+					})
+					console.log("otp not verified");
+					return { status: 400 };
+				}
+		
+			} catch (error) {
 				set({
 					isAuthenticated:false,
 					isVerified:false,
 				})
-				console.log("otp not verified");
+				throw error;
 			}
-	
-		} catch (error) {
-			set({
-				isAuthenticated:false,
-				isVerified:false,
-			})
-		    throw error;
-		}
-	  },
+		},
 
 	logout: async () => {
 		set({ isLoading: true, error: null });
